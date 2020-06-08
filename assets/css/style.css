@@ -282,10 +282,375 @@ footer{ display: none;}
 .banner-content ul li a:active { 
   -webkit-transform: scale(0.95); 
   -ms-transform: scale(0.95); 
-  transform: scale(0.95); 
+  transform: scale(0.95);
 }
 /* index page banner section styling ends here */
 
+/* index page modal section styling start here */
+.modal {
+  width: 100%;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal > div {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/* form modal styling starts */
+.form-modal {
+  width: 70%;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  display: none;
+  position: relative;
+  background-color: #FFF;
+  -webkit-box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
+  box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
+  overflow: hidden;
+  -webkit-animation: slideDown 0.6s ease-in-out forwards;
+  animation: slideDown 0.6s ease-in-out forwards;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.sign-up-form,
+.sign-in-form {
+  width: 50%;
+  height: 100%;
+  padding: 4%;
+  display: inline-block;
+  background-color: #FFF;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.sign-up-form {
+  position: relative;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.sign-in-form {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.modal h3 {
+  font-size: 25px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.sign-up-form > span,
+.sign-in-form > span {
+  padding-bottom: 3%;
+  display: block;
+  text-transform: capitalize;
+  font-size: 15px;
+  text-align: center;
+}
+
+form label {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.sign-up-form input,
+.sign-in-form input {
+  width: 100%;
+  height: 35px;
+  padding: 2% 5%;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin-bottom: 2%;
+  display: block;
+  background-color: rgba(0,0,0,0.1);
+  border-style: none;
+  font-size: 13px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.form-group { position: relative; }
+
+.form-group span {
+  width: 50%;
+  padding: 1.5%;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 75%;
+  background-color: #FFF;
+  color: rgb(223, 37, 12);
+  font-size: 12px;
+  text-transform: capitalize;
+  visibility: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 5px 5px 18px rgba(0, 0, 0, 0.7);
+  box-shadow: 5px 5px 18px rgba(0, 0, 0, 0.7);
+}
+
+.form-group span::before {
+  content: " ";
+  text-indent: 0;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  z-index: 1;
+  right: 9%;
+  bottom: -4px;
+  background: #FFF;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.green,
+.red {
+  text-indent: -9999px;
+  position: absolute;
+  bottom: 15%;
+  right: 4.5%;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+  visibility: hidden;
+}
+
+.green::after {
+  content: "\f058";
+  font-family: "fontAwesome";
+  text-indent: 0;
+  float: right;
+  font-size: 20px;
+  color: #004445;
+}
+
+.red::after {
+  content: "\f06a";
+  font-family: "fontAwesome";
+  text-indent: 0;
+  float: right;
+  font-size: 20px;
+  color: rgb(223, 37, 12);
+}
+
+.success input { border: 2px solid #004445; }
+
+.success .green,
+.error .red { visibility: visible; }
+
+.error input { border: 2px solid rgb(223, 37, 12); }
+
+.error span { visibility: visible; }
+
+.sign-in,
+.sign-up{
+  padding: 2% 5%;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  color: #FFF;
+  background-color: #004445;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.form-controls { text-align: center; }
+
+.pannel-container {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 50%;
+  color: #FFF;
+  overflow: hidden;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.pannel-background {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(#004445) , color-stop(#2C786C) ,	to(#31AA6D));
+  background-image: -o-linear-gradient(left, #004445 , #2C786C ,	#31AA6D);
+  background-image: linear-gradient(to right, #004445 , #2C786C ,	#31AA6D);
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.pannel-left,
+.pannel-right {
+  width: 50%;
+  height: 100%;
+  padding: 4%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.pannel-left h2,
+.pannel-right h2 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.pannel-left span,
+.pannel-right span {
+  padding-bottom: 20%;
+  font-size: 13px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#sign-up-form,
+#sign-in-form {
+  padding: 2.5% 10%;
+  border: 1px solid #FFF;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 13px;
+  text-transform: uppercase;
+  outline: none;
+  -webkit-transition: 50ms ease-in-out;
+  -o-transition: 50ms ease-in-out;
+  transition: 50ms ease-in-out;
+}
+
+#sign-up-form:active,
+#sign-in-form:active {
+  -webkit-transform: scale(0.90);
+  -ms-transform: scale(0.90);
+  transform: scale(0.90);
+}
+
+.pannel-left {
+  left: -50%;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.pannel-right {
+  right: 0;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+.active .pannel-right { right: -50%; }
+
+.active .pannel-left { left: 0; }
+
+.active .pannel-container { left: 0; }
+
+.active .pannel-background { right: -100%; }
+
+.active .sign-up-form {
+  z-index: 1;
+  left: 50%;
+  opacity: 0;
+}
+
+.active .sign-in-form {
+  z-index: 2;
+  left: 50%;
+  opacity: 1;
+}
+
+.close {
+  text-indent: -9999px;
+  position: absolute;
+  z-index: 4;
+  top: 8%;
+  right: 8%;
+  background-color: #FFF;
+  padding: 5px 10px;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.close:hover::after { color: #2C786C; }
+
+.close::after {
+  content: "\f00d";
+  font-family: "fontAwesome";
+  text-indent: 0;
+  float: right;
+  font-size: 20px;
+  color: #222222;
+}
+/* form modal styling ends */
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+/* index page modal section styling ends here */
 
 /*=================================
   main styling ends here
