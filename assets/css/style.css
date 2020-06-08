@@ -127,7 +127,6 @@ li {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
 }
 
 .loginPage header a { 
@@ -162,11 +161,6 @@ li {
   border-bottom: 1px solid #FFF;
 }
 /* index page header styling ends here */
-
-
-
-
-
 /*=================================
   Header styling ends here
 =================================*/  
@@ -175,11 +169,122 @@ li {
   main styling starts here
 =================================*/
 
+.modal,
+footer{ display: none;}
 
+/* index page banner section styling start here */
+.loginPage .banner {
+  background: url(/assets/images/card1.jpg) 50% 50% no-repeat;
+  background-size: cover;
+}
 
+.loginPage .banner .wrapper {
+  width: 100%;
+  position: relative;
+}
 
+.background-image {
+  width: 100%;
+  height: 100vh;
+  text-indent: -9999px;
+  background: url(/assets/images/card1.jpg) 50% 50% no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
 
+.loginPage .banner-content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%)  translateY(-50%);
+  -ms-transform: translateX(-50%)  translateY(-50%);
+  transform: translateX(-50%)  translateY(-50%);
+}
 
+.loginPage .banner h2 {
+  padding-top: 0;
+  padding-bottom: 2%;
+  color: #FFF;
+  font-size: 25px;
+  font-family: 'edosz';
+  font-size: 28px;
+  opacity: 0;
+  text-align: center;
+  text-shadow: 5px 10px 5px rgba(0,0,0,0.9);
+  -webkit-animation: slideDown 0.8s ease-in-out 2s forwards;
+  animation: slideDown 0.8s ease-in-out 2s forwards;
+}
+
+@-webkit-keyframes slideDown {
+  0%{
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  
+  100%{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0%{
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  
+  100%{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.loginPage .banner h2 span { color: rgb(250, 204, 0); }
+
+.loginPage .banner-content ul {
+  opacity: 0;
+  text-align: center;
+  -webkit-animation: slideDown 0.8s ease-in-out 2.5s forwards;
+  animation: slideDown 0.8s ease-in-out 2.5s forwards;
+}
+
+.loginPage .banner-content a {
+  padding: 8px 100px;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFF;
+  background-color: #004445;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.banner-content ul li:first-child a {
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.banner-content ul li:last-child a {
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.banner-content ul li a:hover { background-color: #002627; }
+
+.banner-content ul li a:active { 
+  -webkit-transform: scale(0.95); 
+  -ms-transform: scale(0.95); 
+  transform: scale(0.95); 
+}
+/* index page banner section styling ends here */
 
 
 /*=================================
