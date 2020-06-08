@@ -115,6 +115,8 @@ li {
   width: 90%; 
   margin: 0 auto;
 }
+
+.loginPage .wrapper { max-width: 100%; }
 /*=================================
   Header styling starts here
 =================================*/
@@ -274,8 +276,6 @@ li {
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
 }
-
-.banner-content ul li a:hover { background-color: #002627; }
 
 .banner-content ul li a:active { 
   -webkit-transform: scale(0.95); 
@@ -629,8 +629,6 @@ form label {
   transition: 0.3s ease-in-out;
 }
 
-.close:hover::after { color: #2C786C; }
-
 .close::after {
   content: "\f00d";
   font-family: "fontAwesome";
@@ -692,20 +690,19 @@ form label {
 .instagram::before,
 .twitter::before,
 .youtube::before {
+  padding: 2px;
   font-family: "fontAwesome";
   text-indent: 0;
   float: right;
   font-size: 18px;
   color: rgba(255,255,255,0.5);
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  padding: 2px;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-
-.facebook:hover::before,
-.instagram:hover::before,
-.twitter:hover::before,
-.youtube:hover::before { color: rgba(255,255,255,1); }
 /* index page footer styling ends here */
 
 
@@ -717,9 +714,105 @@ form label {
 =================================*/ 
 
 /*media query starts*/
+/*media query for 1024px starts here*/
+@media only screen and (min-width: 1024px) {
+
+  .banner-content ul li a:hover { background-color: #002627; }
+  
+  .close:hover::after { color: #2C786C; }
+  
+  .facebook:hover::before,
+  .instagram:hover::before,
+  .twitter:hover::before,
+  .youtube:hover::before { color: rgba(255,255,255,1); }
+}
+
 /*media query for 995px starts here*/
 @media only screen and (max-width: 995px) {
+  .horizontal-line { width: 40%; }
 
+  .loginPage .banner h2 {
+    width: 70%;
+    margin: 0 auto;
+  }
 
+  .form-modal { width: 90%; }
+} 
 
-}  
+/*media query for 767px starts here*/
+@media only screen and (max-width: 767px) {
+  .loginPage header a { font-size: 35px; }
+
+  .loginPage .banner h2 { font-size: 15px; }
+
+  .loginPage .banner-content a {
+    padding: 4px 50px;
+    font-size: 9px;
+  }
+
+  .banner-content ul li:first-child a {
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .banner-content ul li:last-child a {
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .pannel-container { display: none; }
+
+  .sign-up-form,
+  .sign-in-form { width: 100%; }
+
+  .active .sign-in-form,
+  .active .sign-up-form { left : 0 }
+
+  .facebook::before, 
+  .instagram::before, 
+  .twitter::before, 
+  .youtube::before { font-size: 12px; }
+}
+
+/*media query for 540px starts here*/
+@media only screen and (max-width: 540px) {
+  .loginPage header { padding: 2% 0; }
+
+  .loginPage header ul { justify-content: center; }
+
+  .horizontal-line { display: none; }
+
+  .loginPage .banner h2 { padding-bottom: 7%; }
+
+  .loginPage .banner-content li { display: block; }
+  
+  .loginPage .banner h2 { width: 80%; }
+  
+  .banner-content ul li { padding-bottom: 2%; }
+  
+  .loginPage .banner-content a {
+    padding: 8px 70px;
+    font-size: 13px;
+  }
+
+  .banner-content ul li:first-child a,
+  .banner-content ul li:last-child a {
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .banner-content ul li:last-child a {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .form-modal { width: 98%; }
+
+  .loginPage footer { padding: 3% 0; }
+
+  .facebook::before, 
+  .instagram::before, 
+  .twitter::before, 
+  .youtube::before { font-size: 18px; }
+
+}
