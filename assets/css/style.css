@@ -169,8 +169,6 @@ li {
   main styling starts here
 =================================*/
 
-.modal,
-footer{ display: none;}
 
 /* index page banner section styling start here */
 .loginPage .banner {
@@ -660,7 +658,55 @@ form label {
   footer styling starts here
 =================================*/ 
 
+/* index page footer styling added */
+.loginPage footer{
+  width: 100%;
+  padding: 1.5% 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+}
 
+.loginPage footer ul { text-align: center; }
+
+.loginPage footer li { padding: 0 2%; }
+
+.facebook,
+.instagram,
+.twitter,
+.youtube {
+  text-indent: -9999px;
+  position: relative;
+}
+
+.facebook::before { content:"\f082"; }
+
+.instagram::before { content:"\f16d"; }
+
+.twitter::before { content:"\f099"; }
+
+.youtube::before { content:"\f0e1"; }
+
+.facebook::before,
+.instagram::before,
+.twitter::before,
+.youtube::before {
+  font-family: "fontAwesome";
+  text-indent: 0;
+  float: right;
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.2s ease-in-out;
+  padding: 2px;
+  transition: 0.3s ease-in-out;
+}
+
+.facebook:hover::before,
+.instagram:hover::before,
+.twitter:hover::before,
+.youtube:hover::before { color: rgba(255,255,255,1); }
+/* index page footer styling ends here */
 
 
 
