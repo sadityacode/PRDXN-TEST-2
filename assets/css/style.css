@@ -716,7 +716,7 @@ form label {
 /*media query starts*/
 /*media query for 1024px starts here*/
 @media only screen and (min-width: 1024px) {
-
+  /* INDEX PAGE HOVER START HERE */
   .banner-content ul li a:hover { background-color: #002627; }
   
   .close:hover::after { color: #2C786C; }
@@ -725,10 +725,12 @@ form label {
   .instagram:hover::before,
   .twitter:hover::before,
   .youtube:hover::before { color: rgba(255,255,255,1); }
+  /* INDEX PAGE HOVER ENDS HERE */
 }
 
 /*media query for 995px starts here*/
 @media only screen and (max-width: 995px) {
+  /* INDEX PAGE RESPONSIVE START HERE */
   .horizontal-line { width: 40%; }
 
   .loginPage .banner h2 {
@@ -737,10 +739,12 @@ form label {
   }
 
   .form-modal { width: 90%; }
+  /* INDEX PAGE RESPONSIVE ENDS HERE */
 } 
 
 /*media query for 767px starts here*/
 @media only screen and (max-width: 767px) {
+  /* INDEX PAGE RESPONSIVE START HERE */
   .loginPage header a { font-size: 35px; }
 
   .loginPage .banner h2 { font-size: 15px; }
@@ -772,10 +776,12 @@ form label {
   .instagram::before, 
   .twitter::before, 
   .youtube::before { font-size: 12px; }
+  /* INDEX PAGE RESPONSIVE ENDS HERE */
 }
 
 /*media query for 540px starts here*/
 @media only screen and (max-width: 540px) {
+  /* INDEX PAGE RESPONSIVE START HERE */
   .loginPage header { padding: 2% 0; }
 
   .loginPage header ul { justify-content: center; }
@@ -814,5 +820,5 @@ form label {
   .instagram::before, 
   .twitter::before, 
   .youtube::before { font-size: 18px; }
-
+  /* INDEX PAGE RESPONSIVE ENDS HERE */
 }
