@@ -1,4 +1,16 @@
 @charset "utf-8";
+@font-face {
+  src: url(../fonts/Brusher.ttf);
+  font-family: 'brusher';
+}
+@font-face {
+  src: url(../fonts/edosz.ttf);
+  font-family: 'edosz';
+}
+@font-face {
+  src: url(../fonts/Brushcrazy\ DEMO.otf);
+  font-family: 'brushify';
+}
 /* ==========================================================================
    1. CSS Reset Code
    ========================================================================== */
@@ -84,7 +96,7 @@ sub { bottom: -.25em; }
 /*for all*/
 body {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Montserrat';
 }
 
 a { 
