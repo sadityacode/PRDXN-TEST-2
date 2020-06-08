@@ -163,6 +163,156 @@ li {
   border-bottom: 1px solid #FFF;
 }
 /* index page header styling ends here */
+/* rest of the page header styling starts here */
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+header .wrapper { position: relative; }
+
+header.active { background-color: rgba(0,0,0,0.4); }
+
+.hamburger { display: none; }
+
+header > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a { 
+  color: #FFF;
+  font-family: 'edosz';
+  font-size: 45px;
+  text-transform: uppercase;
+}
+
+.navbar a {
+  color: #FFF;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.navbar li {
+  padding: 25px 10px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+
+.navbar li::before{
+  content: " ";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  transition: 0.2s ease-in-out;
+}
+
+
+.navbar li:hover { background-color: rgba(0, 0, 0, 0.2); }
+
+.navbar li:hover::before{ background-color: #FFF; }
+
+.navbar li:last-child::before { content: none; }
+
+.navbar li:last-child { 
+  padding: 5px 10px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+
+.navbar li:last-child:hover { background-color: rgba(0,0,0,0.5); }
+
+.ellipsis {
+  text-indent: -9999px;
+}
+
+.ellipsis::before {
+  content: "\f142";
+  padding: 2px;
+  font-family: "fontAwesome";
+  text-indent: 0;
+  float: right;
+  font-size: 15px;
+  color: #FFF;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.social-links {
+  padding: 1% 0.8%;
+  border-radius: 50px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: -1.5%;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.social-links li {
+  display: block;
+  padding-bottom: 7px;
+}
+
+.social-links li:last-child { padding: 0; }
+
+.social-links .facebook,
+.social-links .instagram,
+.social-links .twitter,
+.social-links .youtube {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.social-links .facebook { background-image:  linear-gradient( 135deg, #1F2F98 ,	#4ADEDE ); }
+.social-links .facebook:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+
+.social-links .instagram { background-image:  linear-gradient( 135deg, #240E8B ,	#F04393 ); }
+.social-links .instagram:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+
+.social-links .twitter { background-image:  linear-gradient( 135deg, #205072 ,	#56C596 ); }
+.social-links .twitter:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+
+.social-links .youtube { background-image:  linear-gradient( 135deg, #F04393 ,	#F9C449 ); }
+.social-links .youtube:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+
+
+.social-links .facebook::before { content: "\f09a" }
+
+.social-links .facebook::before,
+.social-links .instagram::before,
+.social-links .twitter::before,
+.social-links .youtube::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 15px;
+  transform: translateX(-50%) translateY(-50%);
+  float: none;
+  color: #FFF;
+}
+/* rest of the page header styling ends here */
 /*=================================
   Header styling ends here
 =================================*/  
