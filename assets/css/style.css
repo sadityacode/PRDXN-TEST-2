@@ -112,13 +112,56 @@ li {
 /*for wrapper*/
 .wrapper {
   max-width: 1360px;
-  width: 86%; 
+  width: 90%; 
   margin: 0 auto;
 }
 /*=================================
   Header styling starts here
 =================================*/
 
+/* index page header styling start here  */
+.loginPage header {
+  width: 100%;
+  padding: 0.5% 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.loginPage header a { 
+  color: #FFF;
+  font-family: 'edosz';
+  font-size: 50px;
+  text-transform: uppercase;
+}
+
+.loginPage header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.horizontal-line {
+  width: 45%;
+  height: 0;
+  text-indent: -9999px;
+  border-bottom: 1px solid #FFF;
+}
+/* index page header styling ends here */
 
 
 
