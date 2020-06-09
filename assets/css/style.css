@@ -1051,6 +1051,49 @@ h3 + p {
 }
 .history .wrapper { text-align: center; }
 /* history section styling ends here */
+/* photo gallery section styling starts here */
+.photo-gallery { 
+  padding: 4% 0;
+  background-color: rgb(250, 204, 0);
+}
+
+.tab-controls {
+  padding: 4% 0 2%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tab-controls li {
+  padding: 0.5% 2%;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.tab-controls li a {
+  font-weight: 700;
+  color: #000;
+}
+
+.tab-controls li:hover { background: rgba(255,255,255,0.4); }
+
+.tab-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.tab-content li { width: 25%; }
+/* photogallery section ends here */
 /* home page styling ends here */
 
 
