@@ -1082,17 +1082,21 @@ h3 + p {
 /* photogallery section ends here */
 /* home page styling ends here */
 
-/* club list page styling start here */
+/* club list page && match detail page styling start here */
 /* banner section styling start here */
+.matchDetailPage .banner .wrapper,
 .clubListPage .banner .wrapper {
   max-width: 100%;
   width: 100%;
   position: relative;
 }
 
+.matchDetailPage .banner img:first-of-type,
 .clubListPage .banner img:first-of-type { display: block; }
+.matchDetailPage .banner img:last-of-type,
 .clubListPage .banner img:last-of-type { display: none; }
 
+.matchDetailPage .banner h2,
 .clubListPage .banner h2 {
   width: 75%;
   position: absolute;
@@ -1111,6 +1115,7 @@ h3 + p {
   text-shadow: 5px 10px 10px rgba(0,0,0,0.7);
 }
 
+.matchDetailPage .banner h2 span,
 .clubListPage .banner h2 span { color: rgb(250, 204, 0); }
 /* banner section styling ends here */
 /* counter section styling start here */
@@ -1745,7 +1750,6 @@ footer ul li a {
   .navbar li:last-child { display: none; }
 
   .hamburger {
-    display: block;
     width: 40px;
     padding: 8px;
     margin: 15px 0;
