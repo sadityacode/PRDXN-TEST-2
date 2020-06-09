@@ -219,11 +219,6 @@ header h1 a {
   transition: 0.2s ease-in-out;
 }
 
-
-.navbar li:hover { background-color: rgba(0, 0, 0, 0.5); }
-
-.navbar li:hover::before{ background-color: rgb(250, 204, 0); }
-
 .navbar li:last-child::before { content: none; }
 
 .navbar li:last-child { 
@@ -233,9 +228,6 @@ header h1 a {
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
-
-
-.navbar li:last-child:hover { background-color: rgba(0,0,0,0.5); }
 
 .ellipsis {
   text-indent: -9999px;
@@ -286,16 +278,12 @@ header h1 a {
 }
 
 .social-links .facebook { background-image:  linear-gradient( 135deg, #1F2F98 ,	#4ADEDE ); }
-.social-links .facebook:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
 
 .social-links .instagram { background-image:  linear-gradient( 135deg, #240E8B ,	#F04393 ); }
-.social-links .instagram:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
 
 .social-links .twitter { background-image:  linear-gradient( 135deg, #205072 ,	#56C596 ); }
-.social-links .twitter:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
 
 .social-links .youtube { background-image:  linear-gradient( 135deg, #F04393 ,	#F9C449 ); }
-.social-links .youtube:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
 
 
 .social-links .facebook::before { content: "\f09a" }
@@ -924,8 +912,6 @@ form label {
   transition-duration: 0.2s;
 }
 
-.slides a:hover { background-color: rgba(252,66,66,1); }
-
 .slider-right-button,
 .slider-left-button {
   text-indent: -9999px;
@@ -972,9 +958,6 @@ form label {
   font-size: 25px;
 }
 
-.slider-right-button:hover,
-.slider-left-button:hover { background-color: rgba(0,0,0,0.4); }
-
 .slider-controls li{
   display: block;
   text-align: center;
@@ -1020,11 +1003,6 @@ form label {
   -webkit-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
-}
-
-.read-more:hover { 
-  -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
 }
 /* merchandise section ends here */
 /* about us section styling start here */
@@ -1081,8 +1059,6 @@ h3 + p {
   100% { width: 100%; }
 }
 
-.tab-controls li:hover { background: rgba(255,255,255,0.4); }
-
 .tab-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1106,6 +1082,38 @@ h3 + p {
 /* photogallery section ends here */
 /* home page styling ends here */
 
+/* club list page styling start here */
+/* banner section styling start here */
+.clubListPage .banner .wrapper {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.clubListPage .banner img:first-of-type { display: block; }
+.clubListPage .banner img:last-of-type { display: none; }
+
+.clubListPage .banner h2 {
+  width: 75%;
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  font-family: 'edosz';
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #FFF;
+  font-size: 35px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-shadow: 5px 10px 10px rgba(0,0,0,0.7);
+}
+
+.clubListPage .banner h2 span { color: rgb(250, 204, 0); }
+/* banner section styling ends here */
+/* club list page styling start here */
 
 .block {
   display: block;
@@ -1211,10 +1219,6 @@ footer ul li a {
   padding: 0.5% 0;
 }
 
-footer li a:hover {
-  color: rgb(250, 204, 0);
-}
-
 .social-icon li {
   padding: 0 2%; 
   display: inline-block;
@@ -1257,7 +1261,10 @@ footer li a:hover {
 =================================*/ 
 
 /*media query starts*/
-/*media query for 1024px starts here*/
+
+ /*=================================
+  media query for 1024px starts here
+=================================*/ 
 @media only screen and (min-width: 1024px) {
   /* INDEX PAGE HOVER START HERE */
   .banner-content ul li a:hover { background-color: #002627; }
@@ -1269,9 +1276,37 @@ footer li a:hover {
   .twitter:hover::before,
   .youtube:hover::before { color: rgba(255,255,255,1); }
   /* INDEX PAGE HOVER ENDS HERE */
+  /* HOME PAGE HOVER START HERE */
+  .navbar li:hover { background-color: rgba(0, 0, 0, 0.5); }
+
+  .navbar li:hover::before{ background-color: rgb(250, 204, 0); }
+
+  .navbar li:last-child:hover { background-color: rgba(0,0,0,0.5); }
+  
+  .social-links .facebook:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+  .social-links .instagram:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+  .social-links .twitter:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+  .social-links .youtube:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+
+  .slides a:hover { background-color: rgba(252,66,66,1); }
+  .slider-right-button:hover,
+  .slider-left-button:hover { background-color: rgba(0,0,0,0.4); }
+
+  .read-more:hover { 
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+  }
+
+  .tab-controls li:hover { background: rgba(255,255,255,0.4); }
+
+  footer li a:hover { color: rgb(250, 204, 0); }
+  /* HOME PAGE HOVER ENDS HERE */
 }
 
-/*media query for 995px starts here*/
+
+ /*=================================
+  media query for 995px starts here
+=================================*/ 
 @media only screen and (max-width: 995px) {
   /* INDEX PAGE RESPONSIVE START HERE */
   .horizontal-line { width: 40%; }
@@ -1300,7 +1335,9 @@ footer li a:hover {
   /* HOME PAGE RESPONSIVE ENDS HERE */
 } 
 
-/*media query for 767px starts here*/
+ /*=================================
+  media query for 767px starts here
+=================================*/ 
 @media only screen and (max-width: 767px) {
   /* INDEX PAGE RESPONSIVE START HERE */
   .loginPage header a { font-size: 35px; }
@@ -1361,7 +1398,9 @@ footer li a:hover {
   /* HOME PAGE RESPONSIVE ENDS HERE */
 }
 
-/*media query for 540px starts here*/
+ /*=================================
+  media query for 540px starts here
+=================================*/ 
 @media only screen and (max-width: 540px) {
   /* INDEX PAGE RESPONSIVE START HERE */
   .loginPage header { padding: 2% 0; }
