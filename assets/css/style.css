@@ -1123,6 +1123,7 @@ h3 + p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -1153,7 +1154,10 @@ h3 + p {
   text-shadow: 5px 10px 18px rgba(0,0,0,0.9);
 }
 
-.counters li span:last-child { font-family: 'edosz'; }
+.counters li span:last-child { 
+  font-family: 'edosz';
+  font-weight: 500;
+}
 /* counter section styling ends here */
 /* award section styling start here */
 .award { padding: 4% 0 0;}
@@ -1227,8 +1231,8 @@ select {
 .search-clublist-form button {
   display: block;
   border-style: none;
-  width: 12%;
-  margin: 0 45%;
+  width: 13%;
+  margin: 0 43.5%;
   box-sizing: border-box;
   padding: 0.8% 2%;
   text-transform: uppercase;
@@ -1300,7 +1304,7 @@ h4 {
   text-align: center;
   text-transform: uppercase;
   font-family: 'edosz';
-  font-size: 20px;
+  font-size: 18px;
   color: #FFF;
   padding-top: 10%;
   text-shadow: 5px 10px 5px rgba(0,0,0,0.9);
@@ -1560,7 +1564,7 @@ footer ul li a {
   .slider h2 { font-size: 30px; }
 
   .merchandise h3 ,
-  h3 { font-size: 20px;}
+  h3 { font-size: 25px;}
 
   h3 + p { 
     font-size: 13px;
@@ -1571,6 +1575,18 @@ footer ul li a {
 
   .tab-controls li a { font-size: 12px;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
+  /* CLUBLIST PAGE RESPONSIVE START HERE */
+  .clubListPage .banner h2 { font-size: 30px; }
+
+  .counters li span:last-child { font-weight: 500; }
+
+  .search-clublist-form button { 
+    width: 18%;
+    margin: 0 41%;
+  }
+
+  .results li { flex-basis: 48%; }
+  /* CLUBLIST PAGE RESPONSIVE ENDS HERE */
 } 
 
  /*=================================
@@ -1617,7 +1633,7 @@ footer ul li a {
   .slider h2 { font-size: 20px;}
   
   .merchandise h3 ,
-  h3 { font-size: 17px;}
+  h3 { font-size: 20px;}
 
   h3 + p { 
     font-size: 13px;
@@ -1634,6 +1650,21 @@ footer ul li a {
 
   .tab-controls li a { font-size: 12px;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
+  /* CLUB LIST PAGE RESPONSIVE STYLING START HERE */
+  .clubListPage .banner h2 { font-size: 20px; }
+  .counters li { width: 50%; }
+  .counters li span:last-child { font-size: 20px; }
+  .search-clublist-form button {
+    width: 25%;
+    margin: 0 37.5%;
+  }
+
+  h6,
+  footer ul li { text-align: center; }
+
+  
+  footer ul li { padding: 5% 0;}
+  /* CLUB LIST PAGE RESPONSIVE STYLING ENDS HERE */
 }
 
  /*=================================
@@ -1783,4 +1814,37 @@ footer ul li a {
   footer ul:first-of-type { padding: 6% 0 10%;}
   .copyrights { padding: 1% 0;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
+  /* CLUB LIST PAGE RESPONSIVE START HERE */
+  .clubListPage .banner img:last-of-type { display: block; }
+  .clubListPage .banner img:first-of-type { display: none; }
+  .counters li span { font-size: 20px; }
+  .counters li { 
+    width: 100%;
+    padding: 4% 0;
+  }
+  .award ul li,
+  .partners ul li { width: 50%; }
+
+  .award,
+  .award ul,
+  .partners,
+  .partners ul { padding: 10% 0 0;}
+
+  .search-clublist > .wrapper { padding: 10% 0;}
+
+  select { 
+    width: 100%;
+    padding: 3% 4%;
+    margin: 5% 0;
+  }
+
+  .search-clublist-form button {
+    width: 50%;
+    margin: 0 25%;
+    padding: 2% 0;
+    font-weight: 800;
+  }
+
+  .results li { flex-basis: 100%; }
+  /* CLUB LIST PAGE RESPONSIVE ENDS HERE */
 }
