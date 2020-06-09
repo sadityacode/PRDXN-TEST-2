@@ -1194,9 +1194,6 @@ h3 + p {
   transition: 0.3s ease-in-out;
 }
 
-.award li:hover::after { background: rgba(255,255,255,0.4); }
-.award li:hover::before { display: block; }
-
 .award li::before {
   content: "\f004";
   font-family: "fontAwesome";
@@ -1252,9 +1249,6 @@ select {
   border-bottom-left-radius: 10px;
   transition: 0.3s ease-in-out;
 }
-
-.search-matchday-form button:hover,
-.search-clublist-form button:hover { box-shadow: 10px 10px 10px rgba(0,0,0,0.4); }
 
 .search-matchday-form option,
 .search-clublist-form option {
@@ -1372,6 +1366,8 @@ h4 {
 /* club list page styling start here */
 
 /* match details page styling start here */
+  h4 a { color: #FFF; }
+
   .donate { padding: 4% 0; }
   .donate .wrapper { text-align: center; }
 
@@ -1385,13 +1381,12 @@ h4 {
   }
 /* match details page styling ends here */
 
-.block {
-  display: block;
-}
+/* some special classes */
+.block { display: block; }
 
-.none {
-  display: none;
-}
+.none { display: none; }
+
+.no-scroll { overflow: hidden; }
 /*=================================
   main styling ends here
 =================================*/
@@ -1526,9 +1521,6 @@ h6,
 footer ul li { text-align: center; }
 /* rest of the pages footer styling ends here */
 
-
-
-
  /*=================================
   footer styling ends here
 =================================*/ 
@@ -1574,6 +1566,13 @@ footer ul li { text-align: center; }
 
   footer li a:hover { color: rgb(250, 204, 0); }
   /* HOME PAGE HOVER ENDS HERE */
+  /* CLUB LIST PAGE AND MATCH DETAIL PAGE HOVER START HERE */
+  .award li:hover::after { background: rgba(255,255,255,0.4); }
+  .award li:hover::before { display: block; }
+
+  .search-matchday-form button:hover,
+  .search-clublist-form button:hover { box-shadow: 10px 10px 10px rgba(0,0,0,0.4); }
+/* CLUB LIST PAGE AND MATCH DETAIL PAGE HOVER ENDS HERE */
 }
 
 
@@ -1607,15 +1606,18 @@ footer ul li { text-align: center; }
   .tab-controls li a { font-size: 12px;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
   /* CLUBLIST PAGE RESPONSIVE START HERE */
+  .matchDetailPage .banner h2,
   .clubListPage .banner h2 { font-size: 30px; }
 
   .counters li span:last-child { font-weight: 500; }
 
+  .search-matchday-form button,
   .search-clublist-form button { 
     width: 18%;
     margin: 0 41%;
   }
 
+  .matchday-results li,
   .results li { flex-basis: 48%; }
   /* CLUBLIST PAGE RESPONSIVE ENDS HERE */
 } 
@@ -1682,9 +1684,25 @@ footer ul li { text-align: center; }
   .tab-controls li a { font-size: 12px;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
   /* CLUB LIST PAGE RESPONSIVE STYLING START HERE */
+  .matchDetailPage .banner h2,
   .clubListPage .banner h2 { font-size: 20px; }
+
   .counters li { width: 50%; }
+
   .counters li span:last-child { font-size: 20px; }
+
+  .search-matchday-form select { 
+    width: 100%;
+    margin: 2.5% 0;
+    padding: 2%;
+  }
+
+  .search-clublist-form select {
+    width: 75%;
+    margin: 2.5% 12.5%;
+  }
+
+  .search-matchday-form button,
   .search-clublist-form button {
     width: 25%;
     margin: 0 37.5%;
@@ -1692,6 +1710,14 @@ footer ul li { text-align: center; }
   
   footer ul li { padding: 5% 0;}
   /* CLUB LIST PAGE RESPONSIVE STYLING ENDS HERE */
+  /* MATCH DETAIL PAGE RESPONSIVE STYLING START HERE */
+  .donate { padding: 8% 0; }
+
+  .donate p span {
+    font-size: 25px;
+    padding: 0 1%;
+  }
+  /* MATCH DETAIL PAGE RESPONSIVE STYLING ENDS HERE */
 }
 
  /*=================================
@@ -1841,13 +1867,19 @@ footer ul li { text-align: center; }
   .copyrights { padding: 1% 0;}
   /* HOME PAGE RESPONSIVE ENDS HERE */
   /* CLUB LIST PAGE RESPONSIVE START HERE */
+  .matchDetailPage .banner img:last-of-type,
   .clubListPage .banner img:last-of-type { display: block; }
+
+  .matchDetailPage .banner img:first-of-type,
   .clubListPage .banner img:first-of-type { display: none; }
+
   .counters li span { font-size: 20px; }
+
   .counters li { 
     width: 100%;
     padding: 4% 0;
   }
+
   .award ul li,
   .partners ul li { width: 50%; }
 
@@ -1856,14 +1888,17 @@ footer ul li { text-align: center; }
   .partners,
   .partners ul { padding: 10% 0 0;}
 
+  .search-matchday > .wrapper,
   .search-clublist > .wrapper { padding: 10% 0;}
 
-  select { 
+  .search-matchday-form select,
+  .search-clublist-form select { 
     width: 100%;
     padding: 3% 4%;
     margin: 5% 0;
   }
 
+  .search-matchday-form button,
   .search-clublist-form button {
     width: 50%;
     margin: 0 25%;
@@ -1871,6 +1906,10 @@ footer ul li { text-align: center; }
     font-weight: 800;
   }
 
+  .matchday-results li,
   .results li { flex-basis: 100%; }
   /* CLUB LIST PAGE RESPONSIVE ENDS HERE */
+  /* MATCH DETAIL PAGE RESPONSIVE STYLING START HERE */
+  .donate { padding: 10% 0; }
+  /* MATCH DETAIL PAGE RESPONSIVE STYLING ENDS HERE */
 }
