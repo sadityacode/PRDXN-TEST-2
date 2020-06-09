@@ -179,10 +179,20 @@ header.active { background-color: rgba(0,0,0,0.6); }
 .hamburger { display: none; }
 
 header > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -204,6 +214,8 @@ header h1 a {
   padding: 25px 10px;
   position: relative;
   cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 
@@ -216,6 +228,8 @@ header h1 a {
   bottom: 0;
   left: 0;
   background-color: transparent;
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 
@@ -226,6 +240,8 @@ header h1 a {
   border-top-right-radius: 7px;
   border-bottom-left-radius: 7px;
   cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
@@ -274,16 +290,30 @@ header h1 a {
   height: 45px;
   border-radius: 50%;
   position: relative;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-.social-links .facebook { background-image:  linear-gradient( 135deg, #1F2F98 ,	#4ADEDE ); }
+.social-links .facebook { 
+  background-image:  -o-linear-gradient( 315deg, #1F2F98 ,	#4ADEDE ); 
+  background-image:  linear-gradient( 135deg, #1F2F98 ,	#4ADEDE ); 
+}
 
-.social-links .instagram { background-image:  linear-gradient( 135deg, #240E8B ,	#F04393 ); }
+.social-links .instagram { 
+  background-image:  -o-linear-gradient( 315deg, #240E8B ,	#F04393 ); 
+  background-image:  linear-gradient( 135deg, #240E8B ,	#F04393 ); 
+}
 
-.social-links .twitter { background-image:  linear-gradient( 135deg, #205072 ,	#56C596 ); }
+.social-links .twitter { 
+  background-image:  -o-linear-gradient( 315deg, #205072 ,	#56C596 ); 
+  background-image:  linear-gradient( 135deg, #205072 ,	#56C596 ); 
+}
 
-.social-links .youtube { background-image:  linear-gradient( 135deg, #F04393 ,	#F9C449 ); }
+.social-links .youtube { 
+  background-image:  -o-linear-gradient( 315deg, #F04393 ,	#F9C449 ); 
+  background-image:  linear-gradient( 135deg, #F04393 ,	#F9C449 ); 
+}
 
 
 .social-links .facebook::before { content: "\f09a" }
@@ -296,6 +326,8 @@ header h1 a {
   top: 50%;
   left: 50%;
   font-size: 15px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   float: none;
   color: #FFF;
@@ -359,13 +391,13 @@ header h1 a {
   0%{
     opacity: 0;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   
   100%{
     opacity: 1;
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -373,13 +405,13 @@ header h1 a {
   0%{
     opacity: 0;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   
   100%{
     opacity: 1;
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -491,7 +523,6 @@ header h1 a {
   position: absolute;
   z-index: 1;
   top: 0;
-  left: 0;
   left: 0;
   opacity: 0;
   -webkit-transition: 0.6s ease-in-out;
@@ -649,8 +680,8 @@ form label {
   position: absolute;
   top: 0;
   right: 0;
-  background-image: -webkit-gradient(linear, left top, right top, from(#004445) , color-stop(#2C786C) ,	to(#31AA6D));
   background-image: -o-linear-gradient(left, #004445 , #2C786C ,	#31AA6D);
+  background-image: -webkit-gradient(linear, left top, right top, from(#004445) , color-stop(#2C786C) ,	to(#31AA6D));
   background-image: linear-gradient(to right, #004445 , #2C786C ,	#31AA6D);
   -webkit-transition: 0.6s ease-in-out;
   -o-transition: 0.6s ease-in-out;
@@ -1026,6 +1057,7 @@ h3 + p {
   padding: 4% 0;
   background-color: rgba(0, 0, 0, 0.07);
 }
+
 .history .wrapper { text-align: center; }
 /* history section styling ends here */
 /* photo gallery section styling starts here */
@@ -1054,6 +1086,11 @@ h3 + p {
   color: #000;
 }
 
+@-webkit-keyframes filter {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
 @keyframes filter {
   0% { width: 0; }
   100% { width: 100%; }
@@ -1077,6 +1114,7 @@ h3 + p {
 .tab-content li { width: 25%; }
 
 .tab-content li.active figure {
+  -webkit-animation: filter 1s ease-in-out forwards;
   animation: filter 1s ease-in-out forwards;
 }
 /* photogallery section ends here */
@@ -1093,6 +1131,7 @@ h3 + p {
 
 .matchDetailPage .banner img:first-of-type,
 .clubListPage .banner img:first-of-type { display: block; }
+
 .matchDetailPage .banner img:last-of-type,
 .clubListPage .banner img:last-of-type { display: none; }
 
@@ -1120,14 +1159,15 @@ h3 + p {
 /* banner section styling ends here */
 /* counter section styling start here */
 .counters {
-  background-color: rgb(250, 204, 0);
   padding: 5% 0;
+  background-color: rgb(250, 204, 0);
 }
 
 .counters ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -1146,11 +1186,11 @@ h3 + p {
 
 .counters li span {
   display: block;
+  color: #000;
   text-align: center;
   font-family: 'Montserrat';
   font-size: 25px;
   font-weight: 700;
-  color: #000;
   text-transform: uppercase; 
 }
 
@@ -1168,11 +1208,20 @@ h3 + p {
 .award { padding: 4% 0 0;}
 
 .award .wrapper { width: 100%;}
+
 .award ul { 
   padding: 4% 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -1191,6 +1240,8 @@ h3 + p {
   top: 0;
   left: 0;
   background: transparent;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
@@ -1201,6 +1252,8 @@ h3 + p {
   z-index: 1;
   top: 50%;
   left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   color: #FFF;
   font-size: 25px;
@@ -1218,43 +1271,47 @@ h3 + p {
 
 select {
   width: 50%;
-  margin: 2.5% 25%;
-  border-style: none;
-  background-color: rgb(255, 174, 0);
   padding: 1% 2%;
+  border-style: none;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin: 2.5% 25%;
+  background-color: rgb(255, 174, 0);
   font-family: 'Montserrat';
   font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: 2%;
 }
 
 .search-matchday-form button,
 .search-clublist-form button {
-  display: block;
-  border-style: none;
   width: 13%;
-  margin: 0 43.5%;
-  box-sizing: border-box;
   padding: 0.8% 2%;
+  border-style: none;
+  border: 1px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin: 0 43.5%;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 700;
   background-color: transparent;
-  border: 1px solid black;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .search-matchday-form option,
 .search-clublist-form option {
-  background-color: rgb(255, 222, 73);
   padding: 1% 2%;
   border-style: none;
+  background-color: rgb(255, 222, 73);
 }
 
 .matchday-results,
@@ -1265,10 +1322,18 @@ select {
 
 .matchday-results ul,
 .results ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-line-pack: center;
   align-content: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -1277,13 +1342,16 @@ select {
 
 .matchday-results li,
 .results li {
-  background:   url(/assets/images/card1.jpg) , rgba(0,0,0,0.5);
+  border-radius: 30px;
+  margin-bottom: 2%;
+  background: url(/assets/images/card1.jpg) , rgba(0,0,0,0.5);
   background-size: cover;
   background-position: center center;
-  border-radius: 30px;
+  -ms-flex-preferred-size: 32%;
   flex-basis: 32%;
-  margin-bottom: 2%;
   opacity: 0;
+  -webkit-transition: 0.6s ease-in-out;
+  -o-transition: 0.6s ease-in-out;
   transition: 0.6s ease-in-out;
 }
 
@@ -1291,21 +1359,28 @@ select {
 .results .active-scrore-card { opacity: 1; }
 
 .overlay {
+  padding: 6% 8%;
+  padding-top: 15%;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   position: relative;
-  padding: 6% 8%;
-  border-radius: 30px;
   background-color: rgba(0,0,0,0.3);
-  padding-top: 15%;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-.team-one { width: 38%; }
+.team-one,
 .team-two { width: 38%; }
 
 .overlay img {
   border-radius: 50%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 7px solid #2C786C;
 }
@@ -1328,12 +1403,14 @@ h4 {
   font-weight: 700;
   top: 50%;
   left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
 
 .match-detail {
-  position: absolute;
   width: 100%;
+  position: absolute;
   top: 5%;
   left: 0;
 }
@@ -1352,12 +1429,23 @@ h4 {
 .partners { padding: 4% 0 0;}
 
 .partners .wrapper { width: 100%; }
+
 .partners ul { 
   padding: 4% 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -1366,19 +1454,20 @@ h4 {
 /* club list page styling start here */
 
 /* match details page styling start here */
-  h4 a { color: #FFF; }
+h4 a { color: #FFF; }
 
-  .donate { padding: 4% 0; }
-  .donate .wrapper { text-align: center; }
+.donate { padding: 4% 0; }
 
-  .donate p { text-align: center; }
+.donate .wrapper { text-align: center; }
 
-  .donate p span {
-    font-family: 'edosz';
-    color: red;
-    font-size: 30px;
-    padding: 0 1%;
-  }
+.donate p { text-align: center; }
+
+.donate p span {
+  font-family: 'edosz';
+  color: red;
+  font-size: 30px;
+  padding: 0 1%;
+}
 /* match details page styling ends here */
 
 /* some special classes */
@@ -1455,8 +1544,8 @@ h4 {
 
 /* rest of the pages footer styling start here */
 footer { 
-  background: -webkit-gradient( linear , left top, right top , from(rgba(0,0,0,0.7)), color-stop(rgba(0,0,0,0.5)) , to(rgba(0,0,0,7)) ), url('/assets/images/Ffootball2.jpg'); 
   background: -o-linear-gradient( left , rgba(0,0,0,0.7), rgba(0,0,0,0.5) , rgba(0,0,0,7) ), url('/assets/images/Ffootball2.jpg'); 
+  background: -webkit-gradient( linear , left top, right top , from(rgba(0,0,0,0.7)), color-stop(rgba(0,0,0,0.5)) , to(rgba(0,0,0,7)) ), url('/assets/images/Ffootball2.jpg'); 
   background: linear-gradient( to right , rgba(0,0,0,0.7), rgba(0,0,0,0.5) , rgba(0,0,0,7) ), url('/assets/images/Ffootball2.jpg');
   background-size: cover;
   background-position: 50% 50%;
@@ -1548,12 +1637,28 @@ footer ul li { text-align: center; }
 
   .navbar li:last-child:hover { background-color: rgba(0,0,0,0.5); }
   
-  .social-links .facebook:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
-  .social-links .instagram:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
-  .social-links .twitter:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
-  .social-links .youtube:hover { box-shadow: 0px 10px 10px rgba(0,0,0,0.4); }
+  .social-links .facebook:hover { 
+    -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+  }
+
+  .social-links .instagram:hover { 
+    -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+  }
+
+  .social-links .twitter:hover { 
+    -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+  }
+
+  .social-links .youtube:hover { 
+    -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4); 
+  }
 
   .slides a:hover { background-color: rgba(252,66,66,1); }
+  
   .slider-right-button:hover,
   .slider-left-button:hover { background-color: rgba(0,0,0,0.4); }
 
@@ -1571,7 +1676,10 @@ footer ul li { text-align: center; }
   .award li:hover::before { display: block; }
 
   .search-matchday-form button:hover,
-  .search-clublist-form button:hover { box-shadow: 10px 10px 10px rgba(0,0,0,0.4); }
+  .search-clublist-form button:hover { 
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+  }
 /* CLUB LIST PAGE AND MATCH DETAIL PAGE HOVER ENDS HERE */
 }
 
@@ -1618,7 +1726,10 @@ footer ul li { text-align: center; }
   }
 
   .matchday-results li,
-  .results li { flex-basis: 48%; }
+  .results li { 
+    -ms-flex-preferred-size: 48%; 
+    flex-basis: 48%; 
+  }
   /* CLUBLIST PAGE RESPONSIVE ENDS HERE */
 } 
 
@@ -1727,7 +1838,11 @@ footer ul li { text-align: center; }
   /* INDEX PAGE RESPONSIVE START HERE */
   .loginPage header { padding: 2% 0; }
 
-  .loginPage header ul { justify-content: center; }
+  .loginPage header ul { 
+    -webkit-box-pack: center; 
+    -ms-flex-pack: center; 
+    justify-content: center; 
+  }
 
   .horizontal-line { display: none; }
 
@@ -1776,13 +1891,20 @@ footer ul li { text-align: center; }
     top: 0;
     left: 0;
     padding: 10% 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: rgb(250, 204, 0);
+    -webkit-clip-path: circle( 0 at 100%  0);
     clip-path: circle( 0 at 100%  0);
+    -webkit-transition: 0.6s ease-in-out;
+    -o-transition: 0.6s ease-in-out;
     transition: 0.6s ease-in-out;
   }
 
-  .active-navbar { clip-path: circle(200% at 100% 0);}
+  .active-navbar { 
+    -webkit-clip-path: circle(200% at 100% 0); 
+    clip-path: circle(200% at 100% 0);
+  }
 
   .navbar li {
     display: block;
@@ -1804,6 +1926,7 @@ footer ul li { text-align: center; }
     display: block;
     position: relative;
     z-index: 3;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     cursor: pointer;
   }
@@ -1816,6 +1939,7 @@ footer ul li { text-align: center; }
     background-color: #FFF;
     text-indent: -9999px;
     -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
   }
 
@@ -1823,18 +1947,21 @@ footer ul li { text-align: center; }
 
   .active-hamburger span:first-child {
     -webkit-transform: translateY(7px) rotate(135deg);
+    -ms-transform: translateY(8px) rotate(135deg);
     transform: translateY(8px) rotate(135deg);
     background-color: #000;
   }
 
   .active-hamburger span:last-child {
     -webkit-transform: translateY(7px) rotate(135deg);
+    -ms-transform: translateY(-8px) rotate(-135deg);
     transform: translateY(-8px) rotate(-135deg);
     background-color: #000;
   }
 
   .active-hamburger span:nth-child(2) {
     -webkit-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
     background-color: #000;
   }
@@ -1907,7 +2034,7 @@ footer ul li { text-align: center; }
   }
 
   .matchday-results li,
-  .results li { flex-basis: 100%; }
+  .results li { -ms-flex-preferred-size: 100%; flex-basis: 100%; }
   /* CLUB LIST PAGE RESPONSIVE ENDS HERE */
   /* MATCH DETAIL PAGE RESPONSIVE STYLING START HERE */
   .donate { padding: 10% 0; }
