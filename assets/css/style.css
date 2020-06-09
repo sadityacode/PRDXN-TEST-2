@@ -210,10 +210,10 @@ header h1 a {
 }
 
 
-.navbar li::before{
+.navbar li::before {
   content: " ";
   width: 100%;
-  height: 3px;
+  height: 4px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -224,7 +224,7 @@ header h1 a {
 
 .navbar li:hover { background-color: rgba(0, 0, 0, 0.5); }
 
-.navbar li:hover::before{ background-color: #FFF; }
+.navbar li:hover::before{ background-color: rgb(250, 204, 0); }
 
 .navbar li:last-child::before { content: none; }
 
@@ -1070,9 +1070,16 @@ h3 + p {
   transition: 0.3s ease-in-out;
 }
 
+.tab-controls li.active { background: rgba(255,255,255,0.4); }
+
 .tab-controls li a {
   font-weight: 700;
   color: #000;
+}
+
+@keyframes filter {
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
 .tab-controls li:hover { background: rgba(255,255,255,0.4); }
@@ -1093,6 +1100,10 @@ h3 + p {
 }
 
 .tab-content li { width: 25%; }
+
+.tab-content li.active figure {
+  animation: filter 1s ease-in-out forwards;
+}
 /* photogallery section ends here */
 /* home page styling ends here */
 
@@ -1115,16 +1126,24 @@ h3 + p {
 /* index page footer styling added */
 .loginPage footer{
   width: 100%;
-  padding: 1.5% 0;
   position: fixed;
   z-index: 1;
   left: 0;
   bottom: 0;
+  background: transparent;
 }
 
-.loginPage footer ul { text-align: center; }
+.loginPage footer .wrapper { padding: 0;}
 
-.loginPage footer li { padding: 0 2%; }
+.loginPage footer ul { 
+  padding: 1.5% 0;
+  text-align: center;
+}
+
+.loginPage footer li { 
+  padding: 0 2%;
+  display: inline-block;
+}
 
 .facebook,
 .instagram,
@@ -1151,6 +1170,7 @@ h3 + p {
   text-indent: 0;
   float: right;
   font-size: 18px;
+  font-weight: 200;
   color: rgba(255,255,255,0.5);
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -1161,6 +1181,70 @@ h3 + p {
 }
 /* index page footer styling ends here */
 
+/* rest of the pages footer styling start here */
+footer { 
+  background: linear-gradient( to right , rgba(0,0,0,0.7), rgba(0,0,0,0.5) , rgba(0,0,0,7) ), url('/assets/images/Ffootball2.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+footer .wrapper { padding: 5% 0 1%;}
+
+h6 a { 
+  color: #FFF;
+  font-family: 'edosz';
+  font-size: 45px;
+  text-transform: uppercase;
+}
+
+footer ul:first-of-type { padding: 3% 0;}
+
+footer ul li { display: block; }
+
+footer ul li a {
+  text-transform: uppercase;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0.5% 0;
+}
+
+footer li a:hover {
+  color: rgb(250, 204, 0);
+}
+
+.social-icon li {
+  padding: 0 2%; 
+  display: inline-block;
+}
+
+.social-icon { text-align: center;}
+
+.copyrights { 
+  padding: 0.5% 0;
+  background-color: #002627;
+  text-align: center;
+}
+
+.copyrights a {
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 100;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.copyrights a::after {
+  content: "\f1f9";
+  float: left;
+  font-family: "fontAwesome";
+  position: absolute;
+  top: 55%;
+  left: -10%;
+  transform: translateY(-50%);
+}
+/* rest of the pages footer styling ends here */
 
 
 
