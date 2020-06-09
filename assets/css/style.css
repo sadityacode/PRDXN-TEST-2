@@ -1044,6 +1044,13 @@ h3 + p {
 
 .about-us { padding: 4% 0; }
 /* about us section styling ends here */
+/* history section styling start here */
+.history { 
+  padding: 4% 0;
+  background-color: rgba(0, 0, 0, 0.07);
+}
+.history .wrapper { text-align: center; }
+/* history section styling ends here */
 /* home page styling ends here */
 
 
