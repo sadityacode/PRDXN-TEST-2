@@ -131,6 +131,8 @@ li {
   left: 0;
 }
 
+.loginPage header .wrapper { display: block;}
+
 .loginPage header a { 
   color: #FFF;
   font-family: 'edosz';
@@ -220,7 +222,7 @@ header h1 a {
 }
 
 
-.navbar li:hover { background-color: rgba(0, 0, 0, 0.2); }
+.navbar li:hover { background-color: rgba(0, 0, 0, 0.5); }
 
 .navbar li:hover::before{ background-color: #FFF; }
 
@@ -788,6 +790,48 @@ form label {
   color: #222222;
 }
 /* form modal styling ends */
+/* index page modal section styling ends here */
+
+/* home page styling starts here */
+/* welcome section styling start here */
+.welcome {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 20%;
+  left: -25%;
+  background-color: rgb(250, 204, 0);
+  padding: 2% 4%;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  animation: slideIn 4s ease-in-out;
+}
+
+.welcome span {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.welcome .user {
+  font-family: 'edosz';
+  font-size: 20px;
+}
+
+@keyframes slideIn {
+  0% { left: -25%; }
+
+  20% { left: 1.5%; }
+
+  30% { left: 1%; }
+
+  80% { left: 1%; }
+
+  100% { left: -25%; }
+}
+/* welcome section styling ends here */
+/* home page styling ends here */
+
 
 .block {
   display: block;
@@ -796,8 +840,6 @@ form label {
 .none {
   display: none;
 }
-/* index page modal section styling ends here */
-
 /*=================================
   main styling ends here
 =================================*/
