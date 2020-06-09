@@ -1275,9 +1275,11 @@ select {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding: 3% 0;
   flex-wrap: wrap;
 }
+
+.matchday-results ul.active,
+.results ul.active { padding: 3% 0; }
 
 .matchday-results li,
 .results li {
@@ -1365,11 +1367,23 @@ h4 {
   justify-content: space-between;
 }
 
-.partners li {
-  width: 25%;
-}
+.partners li { width: 25%; }
 /* partnership section styling ends here */
 /* club list page styling start here */
+
+/* match details page styling start here */
+  .donate { padding: 4% 0; }
+  .donate .wrapper { text-align: center; }
+
+  .donate p { text-align: center; }
+
+  .donate p span {
+    font-family: 'edosz';
+    color: red;
+    font-size: 30px;
+    padding: 0 1%;
+  }
+/* match details page styling ends here */
 
 .block {
   display: block;
@@ -1507,6 +1521,9 @@ footer ul li a {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+h6,
+footer ul li { text-align: center; }
 /* rest of the pages footer styling ends here */
 
 
@@ -1672,10 +1689,6 @@ footer ul li a {
     width: 25%;
     margin: 0 37.5%;
   }
-
-  h6,
-  footer ul li { text-align: center; }
-
   
   footer ul li { padding: 5% 0;}
   /* CLUB LIST PAGE RESPONSIVE STYLING ENDS HERE */
