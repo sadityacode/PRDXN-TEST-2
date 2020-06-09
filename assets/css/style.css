@@ -1213,8 +1213,10 @@ h3 + p {
 .award li.active::before { color: rgb(252,66,66); }
 /* award section styling ends here */
 /* search clublist section styling start here */
+.search-matchday,
 .search-clublist { background-color: rgb(250, 204, 0); }
 
+.search-matchday > .wrapper,
 .search-clublist > .wrapper { padding: 3% 0;}
 
 select {
@@ -1233,6 +1235,7 @@ select {
   margin-bottom: 2%;
 }
 
+.search-matchday-form button,
 .search-clublist-form button {
   display: block;
   border-style: none;
@@ -1247,21 +1250,26 @@ select {
   border: 1px solid black;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  transition: 0.3s ease-in-out;
 }
 
+.search-matchday-form button:hover,
 .search-clublist-form button:hover { box-shadow: 10px 10px 10px rgba(0,0,0,0.4); }
 
+.search-matchday-form option,
 .search-clublist-form option {
   background-color: rgb(255, 222, 73);
   padding: 1% 2%;
   border-style: none;
 }
 
+.matchday-results,
 .results {
   background: url(/assets/images/background.jpeg) 50% 0 no-repeat;
   background-size: cover;
 }
 
+.matchday-results ul,
 .results ul {
   display: flex;
   justify-content: space-between;
@@ -1269,9 +1277,9 @@ select {
   align-content: center;
   padding: 3% 0;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
+.matchday-results li,
 .results li {
   background:   url(/assets/images/card1.jpg) , rgba(0,0,0,0.5);
   background-size: cover;
@@ -1283,6 +1291,7 @@ select {
   transition: 0.6s ease-in-out;
 }
 
+.matchday-results .active-scrore-card,
 .results .active-scrore-card { opacity: 1; }
 
 .overlay {
