@@ -1113,6 +1113,48 @@ h3 + p {
 
 .clubListPage .banner h2 span { color: rgb(250, 204, 0); }
 /* banner section styling ends here */
+/* counter section styling start here */
+.counters {
+  background-color: rgb(250, 204, 0);
+  padding: 5% 0;
+}
+
+.counters ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+.counters li {
+  width: 25%;
+  text-align: center;
+}
+
+.counters li span {
+  display: block;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 25px;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase; 
+}
+
+.counter {
+  padding-bottom: 5%;
+  text-shadow: 5px 10px 18px rgba(0,0,0,0.9);
+}
+
+.counters li span:last-child { font-family: 'edosz'; }
+/* counter section styling ends here */
 /* club list page styling start here */
 
 .block {
