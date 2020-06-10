@@ -393,6 +393,14 @@ window.onload = function () {
 					});
 				}
 			}
+
+			var awardsArray = this.Array.from(this.document.querySelectorAll('.award li'));
+
+			awardsArray.forEach(function (element) {
+				element.addEventListener('click', function () {
+					element.classList.toggle('active');
+				});
+			});
 		}
 
 	}
