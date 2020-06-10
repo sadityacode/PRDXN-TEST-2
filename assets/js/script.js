@@ -102,7 +102,6 @@ window.onload = function () {
 
 		// function for storing the data
 		function storeData() {
-			debugger;
 
 			var allFieldsCorrect = null;
 			var newEmail = document.querySelector('.sign-up-email');
@@ -155,7 +154,6 @@ window.onload = function () {
 
 				if (UserAlreadyExist['password'] === password) {
 					formReset();
-					debugger;
 
 					UserAlreadyExist['userLogin'] = true;
 					UserAlreadyExist['welcomeUser'] = true;
@@ -169,7 +167,6 @@ window.onload = function () {
 
 		// function for checking the user-is exist or not
 		function checkUser(Email) {
-			debugger;
 			if (localStorage.length !== 0) {
 				for (var key in localStorage) {
 					if (key === "length") { break; }
@@ -201,21 +198,127 @@ window.onload = function () {
 
 		var header = this.document.querySelector('header');
 		var ellipsis = this.document.querySelector('.ellipsis');
+		var currentUrl = new URL(window.location.href);
+		var loggedInUser = currentUrl.searchParams.get("userid");
 
-		window.addEventListener('scroll' , function(){
+
+		// function for passing values through url
+
+		function passValues(classes, page) {
+			var pageArray = Array.from(window.document.querySelectorAll(classes));
+			pageArray.forEach(function (element) {
+				element.setAttribute("href", page + "?userid=" + loggedInUser)
+			});
+		}
+
+		passValues('.home-page', 'home.html');
+		passValues('.clublist-page', 'clublist.html');
+		passValues('.matchdetail-page', 'matchdetail.html');
+
+		// function for header activation 
+		window.addEventListener('scroll', function () {
 			var pageTop = window.scrollY;
 
-			if( !header.classList.contains('active') && pageTop > 0 ){
+			if (!header.classList.contains('active') && pageTop > 0) {
 				header.classList.add('active');
-			} else if( header.classList.contains('active') && pageTop == 0 ){
+			} else if (header.classList.contains('active') && pageTop == 0) {
 				header.classList.remove('active');
 			}
 		});
 
-		ellipsis.parentNode.addEventListener('click', function(){
+		// function for social links display
+		ellipsis.parentNode.addEventListener('click', function () {
 			var socialLinks = document.querySelector('.social-links');
 			socialLinks.classList.toggle('block');
 		});
+
+		if (page_class.classList.contains("homePage")) {
+			console.log('hi');
+
+			var welcomeDivision = document.querySelector('.welcome');
+			var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
+
+			// condition for welcome division
+			if (userData.welcomeUser == true) {
+				userData.welcomeUser = false;
+				window.localStorage.setItem(userData.uniqueId, JSON.stringify(userData));
+
+				welcomeDivision.querySelector('.user').innerText = userData.username;
+				welcomeDivision.classList.add('block');
+			}
+
+			// function for slider
+			var slides = document.querySelector(".slides");
+			var slide = document.querySelectorAll(".slides li");
+
+			// buttons manipulation
+			var prevBtn = document.querySelector(".slider-left-button");
+			var nxtBtn = document.querySelector(".slider-right-button");
+
+			// events
+			slides.addEventListener("transitionend", backtoOrigin);
+			nxtBtn.addEventListener("click", next);
+			prevBtn.addEventListener("click", prev);
+
+			// pre-styling
+			let count = 1;
+
+			slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+
+			// function for next slide
+			function next() {
+				if (count >= slide.length - 1) {
+					return;
+				}
+				else {
+					slides.classList.remove("active-slide");
+					count++;
+					slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+					var currentDot = document.querySelector(".active");
+				}
+			}
+
+			// function for previous slide
+			function prev() {
+				if (count <= 0) {
+					return;
+				}
+				else {
+					slides.classList.remove("active-slide");
+					count--;
+					slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+					var currentDot = document.querySelector(".active");
+				}
+			}
+
+			// function for backtoOrigin
+			function backtoOrigin() {
+				if (slide[count].id === "lastClone") {
+					slides.classList.add("active-slide")
+					count = slide.length - 2;
+					slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+				}
+
+				if (slide[count].id === "firstClone") {
+					slides.classList.add("active-slide")
+					count = slide.length - count;
+					slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+				}
+			}
+
+			// function for animating slides
+			function animate() {
+				if (count >= slide.length - 1) {
+					return;
+				}
+				else {
+					slides.classList.remove("active-slide");
+					count++;
+					slides.style.transform = 'translateX(' + (-100 * count) + '%)';
+				}
+			}
+			setInterval(animate, 7000);
+		}
 
 	}
 }
