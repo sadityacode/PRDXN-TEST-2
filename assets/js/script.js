@@ -353,6 +353,8 @@ window.onload = function () {
 				});
 			});
 
+		} else if (page_class.classList.contains("clubListPage")) {
+			
 		}
 
 	}
