@@ -401,6 +401,127 @@ window.onload = function () {
 					element.classList.toggle('active');
 				});
 			});
+
+			// some confidential information
+			var base_url = "https://raw.githubusercontent.com/openfootball/football.json/master/2015-16/en.1.clubs.json";
+			var contractual_url = "https://raw.githubusercontent.com/openfootball/football.json/master/2019-20/en.1.json";
+
+			var searchClublist = this.document.querySelector('.search-clublist-form #clublist');
+			var searchButton = this.document.querySelector('.search-clublist-form button');
+			var resultSection = document.querySelector('.results ul');
+			var previousSearch = null;
+			var individualTeamData = [];
+			var count = null;
+
+			// function for get options
+			function getOptions() {
+				getData(base_url, callback);
+
+				function callback(data) {
+					data.clubs.forEach(function (element) {
+						createNode('option', searchClublist, element.key);
+					});
+				}
+			}
+
+			getOptions();
+
+			// event for initiating the getting data process
+			searchButton.addEventListener('click', function (e) {
+				e.preventDefault();
+				if (previousSearch !== searchClublist.value) {
+					previousSearch = searchClublist.value;
+					var keyName = searchClublist.value;
+					displayCard(keyName);
+				}
+			});
+
+			// function for getting indivual team data
+			function displayCard(keyName) {
+				getData(contractual_url, callback);
+
+				function callback(data) {
+					data.rounds.forEach(function (round) {
+						round.matches.forEach(function (match) {
+							if (match.team1.key == keyName || match.team2.key == keyName) {
+								individualTeamData.push(match);
+							}
+						});
+					});
+
+					console.log(individualTeamData);
+					count = 0;
+					displaySixCard(individualTeamData, resultSection);
+				}
+			}
+
+
+			// function for display six cards
+			function displaySixCard(individualTeamData, appendHere) {
+				for (var i = count; i < count + 6 && i < individualTeamData.length; i++) {
+					debugger;
+					var liNode = createNode('li', appendHere, '');
+					var overlayDiv = createNode('div', liNode, '');
+					var teamOneDiv = createNode('div', overlayDiv, '');
+					var figureNode = createNode('figure', teamOneDiv, '');
+					var imageNodeFirst = createNode('img', figureNode, '');
+					var headingNoode = createNode('h4', teamOneDiv, individualTeamData[i]['team1']['name'].split(' ')[0]);
+					var teamTwoDiv = createNode('div', overlayDiv, '');
+					var figureNode = createNode('figure', teamTwoDiv, '');
+					var imageNodeTwo = createNode('img', figureNode, '');
+					var headingNoode = createNode('h4', teamTwoDiv, individualTeamData[i]['team2']['name'].split(' ')[0]);
+					var spanNodeScore = createNode('span', overlayDiv, individualTeamData[i]['score1'] + ' - ' + individualTeamData[i]['score2']);
+					var divNode = createNode('div', overlayDiv, '');
+					var spanNodeVenue = createNode('span', divNode, 'at england');
+					var spanNodeDate = createNode('span', divNode, individualTeamData[i]['date']);
+
+					imageNodeFirst.setAttribute('src' , 'https://via.placeholder.com/115x115');
+					imageNodeTwo.setAttribute('src' , 'https://via.placeholder.com/115x115');
+					overlayDiv.setAttribute('class' , 'overlay');
+					spanNodeScore.setAttribute('class' , 'score');
+					divNode.setAttribute('class' , 'match-detail');
+				}
+
+				count += 6;
+
+				
+			}
+
+
+			// function for getting data
+			function getData(url, callback) {
+
+				var xhr = new XMLHttpRequest();
+
+				var data = null;
+
+				xhr.open('GET', url);
+				xhr.onload = function () {
+
+					if (this.status === 200) {
+						data = JSON.parse(this.responseText);
+						callback(data);
+					}
+				}
+
+				xhr.onerror = function () {
+					var ErrorNode = document.createElement("h1");
+					ErrorNode.innerText = "something went wrong ! please refresh the page or try after some time :)"
+					document.querySelector(".container").innerHTML = "";
+					document.querySelector(".container").appendChild(ErrorNode);
+				}
+
+				xhr.send();
+			}
+
+			// function for creating elements
+			function createNode(node, place, text) {
+				var elementNode = document.createElement(node);
+				elementNode.innerHTML = text;
+				place.appendChild(elementNode);
+
+				return elementNode;
+			}
 		}
 
 	}
