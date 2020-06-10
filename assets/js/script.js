@@ -354,7 +354,45 @@ window.onload = function () {
 			});
 
 		} else if (page_class.classList.contains("clubListPage")) {
-			
+
+			var counter = document.querySelector('.counters');
+			var counterAt = (counter.offsetTop + counter.offsetHeight * 0.75);
+
+			// event for start the counter
+			window.addEventListener('scroll', function () {
+				var pageAt = (window.scrollY + window.innerHeight);
+
+				if (pageAt > counterAt) { runCounter(counter); }
+			});
+
+			// function for running the counter
+			function runCounter(div) {
+				var counters = div.querySelectorAll('.counter');
+
+				if (!div.classList.contains("started")) {
+					div.classList.add("started");
+					counters.forEach(function (counter) {
+
+						var updateCounter = function () {
+
+							var target = +counter.getAttribute('data-target');
+							var count = +counter.getAttribute('data-current');
+
+							var increment = target / 100;
+
+							if (count < target) {
+								var currentVal = count + increment;
+								counter.setAttribute("data-current", currentVal);
+								counter.innerText = Math.floor(currentVal);
+								setTimeout(updateCounter, 50);
+							} else {
+								counter.innerText = target;
+							}
+						};
+						updateCounter();
+					});
+				}
+			}
 		}
 
 	}
