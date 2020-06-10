@@ -227,7 +227,7 @@ window.onload = function () {
 		});
 
 		// function for hamburger activation
-		hamburger.addEventListener('click', function(){
+		hamburger.addEventListener('click', function () {
 			document.querySelector('html').classList.toggle('no-scroll');
 			document.querySelector('.navbar').classList.toggle('active-navbar');
 			hamburger.classList.toggle('active-hamburger');
@@ -235,6 +235,8 @@ window.onload = function () {
 
 		// function for social links display
 		ellipsis.parentNode.addEventListener('click', function () {
+
+			this.classList.toggle('active');
 			var socialLinks = document.querySelector('.social-links');
 			socialLinks.classList.toggle('block');
 		});
@@ -324,6 +326,32 @@ window.onload = function () {
 			}
 			setInterval(animate, 7000);
 
+			// tab functionality added
+			var tabControlsArray = this.document.querySelectorAll('.tab-controls li');
+			var tabContentArray = this.document.querySelectorAll('.tab-content li');
+
+			tabControlsArray.forEach(function (element) {
+				element.addEventListener('click', function () {
+
+					document.querySelector('.tab-controls li.active').classList.remove('active');
+					element.classList.add('active');
+
+					if (this.firstElementChild.getAttribute('data-category') === 'allMemories') {
+						tabContentArray.forEach(function (liNode) {
+							liNode.classList = 'active';
+						});
+					} else {
+						var category = this.firstElementChild.getAttribute('data-category');
+						tabContentArray.forEach(function (liNode) {
+							if (liNode.getAttribute('data-category') === category) {
+								liNode.classList = 'active';
+							} else { liNode.classList = 'none' }
+						});
+					}
+
+
+				});
+			});
 
 		}
 
