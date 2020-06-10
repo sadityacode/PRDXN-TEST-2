@@ -197,6 +197,26 @@ window.onload = function () {
 				});
 			});
 		}
+	} else {
+
+		var header = this.document.querySelector('header');
+		var ellipsis = this.document.querySelector('.ellipsis');
+
+		window.addEventListener('scroll' , function(){
+			var pageTop = window.scrollY;
+
+			if( !header.classList.contains('active') && pageTop > 0 ){
+				header.classList.add('active');
+			} else if( header.classList.contains('active') && pageTop == 0 ){
+				header.classList.remove('active');
+			}
+		});
+
+		ellipsis.parentNode.addEventListener('click', function(){
+			var socialLinks = document.querySelector('.social-links');
+			socialLinks.classList.toggle('block');
+		});
+
 	}
 }
 
