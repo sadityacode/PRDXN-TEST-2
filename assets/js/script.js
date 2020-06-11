@@ -353,138 +353,41 @@ window.onload = function () {
 				});
 			});
 
-		} else if (page_class.classList.contains("clubListPage")) {
-
-			var counter = document.querySelector('.counters');
-			var counterAt = (counter.offsetTop + counter.offsetHeight * 0.75);
-
-			// event for start the counter
-			window.addEventListener('scroll', function () {
-				var pageAt = (window.scrollY + window.innerHeight);
-
-				if (pageAt > counterAt) { runCounter(counter); }
-			});
-
-			// function for running the counter
-			function runCounter(div) {
-				var counters = div.querySelectorAll('.counter');
-
-				if (!div.classList.contains("started")) {
-					div.classList.add("started");
-					counters.forEach(function (counter) {
-
-						var updateCounter = function () {
-
-							var target = +counter.getAttribute('data-target');
-							var count = +counter.getAttribute('data-current');
-
-							var increment = target / 100;
-
-							if (count < target) {
-								var currentVal = count + increment;
-								counter.setAttribute("data-current", currentVal);
-								counter.innerText = Math.floor(currentVal);
-								setTimeout(updateCounter, 50);
-							} else {
-								counter.innerText = target;
-							}
-						};
-						updateCounter();
-					});
-				}
-			}
-
-			var awardsArray = this.Array.from(this.document.querySelectorAll('.award li'));
-
-			awardsArray.forEach(function (element) {
-				element.addEventListener('click', function () {
-					element.classList.toggle('active');
-				});
-			});
+		} else {
 
 			// some confidential information
 			var base_url = "https://raw.githubusercontent.com/openfootball/football.json/master/2015-16/en.1.clubs.json";
 			var contractual_url = "https://raw.githubusercontent.com/openfootball/football.json/master/2019-20/en.1.json";
 
-			var searchClublist = this.document.querySelector('.search-clublist-form #clublist');
-			var searchButton = this.document.querySelector('.search-clublist-form button');
-			var resultSection = document.querySelector('.results ul');
-			var previousSearch = null;
-			var individualTeamData = [];
-			var count = null;
+			// some common functions which will required at both the pages
+			// function for creating card
+			function createCard(matchData, appendHere) {
+				var liNode = createNode('li', appendHere, '');
+				var overlayDiv = createNode('div', liNode, '');
+				var teamOneDiv = createNode('div', overlayDiv, '');
+				var figureNode = createNode('figure', teamOneDiv, '');
+				var imageNodeFirst = createNode('img', figureNode, '');
+				var headingNoode = createNode('h4', teamOneDiv, matchData['team1']['name'].split(' ')[0]);
+				var teamTwoDiv = createNode('div', overlayDiv, '');
+				var figureNode = createNode('figure', teamTwoDiv, '');
+				var imageNodeTwo = createNode('img', figureNode, '');
+				var headingNoode = createNode('h4', teamTwoDiv, matchData['team2']['name'].split(' ')[0]);
 
-			// function for get options
-			function getOptions() {
-				getData(base_url, callback);
-
-				function callback(data) {
-					data.clubs.forEach(function (element) {
-						createNode('option', searchClublist, element.key);
-					});
-				}
-			}
-
-			getOptions();
-
-			// event for initiating the getting data process
-			searchButton.addEventListener('click', function (e) {
-				e.preventDefault();
-				if (previousSearch !== searchClublist.value) {
-					previousSearch = searchClublist.value;
-					var keyName = searchClublist.value;
-					displayCard(keyName);
-				}
-			});
-
-			// function for getting indivual team data
-			function displayCard(keyName) {
-				getData(contractual_url, callback);
-
-				function callback(data) {
-					data.rounds.forEach(function (round) {
-						round.matches.forEach(function (match) {
-							if (match.team1.key == keyName || match.team2.key == keyName) {
-								individualTeamData.push(match);
-							}
-						});
-					});
-
-					console.log(individualTeamData);
-					count = 0;
-					displaySixCard(individualTeamData, resultSection);
-				}
-			}
-
-
-			// function for display six cards
-			function displaySixCard(individualTeamData, appendHere) {
-				for (var i = count; i < count + 6 && i < individualTeamData.length; i++) {
-					debugger;
-					var liNode = createNode('li', appendHere, '');
-					var overlayDiv = createNode('div', liNode, '');
-					var teamOneDiv = createNode('div', overlayDiv, '');
-					var figureNode = createNode('figure', teamOneDiv, '');
-					var imageNodeFirst = createNode('img', figureNode, '');
-					var headingNoode = createNode('h4', teamOneDiv, individualTeamData[i]['team1']['name'].split(' ')[0]);
-					var teamTwoDiv = createNode('div', overlayDiv, '');
-					var figureNode = createNode('figure', teamTwoDiv, '');
-					var imageNodeTwo = createNode('img', figureNode, '');
-					var headingNoode = createNode('h4', teamTwoDiv, individualTeamData[i]['team2']['name'].split(' ')[0]);
-					var spanNodeScore = createNode('span', overlayDiv, individualTeamData[i]['score1'] + ' - ' + individualTeamData[i]['score2']);
-					var divNode = createNode('div', overlayDiv, '');
-					var spanNodeVenue = createNode('span', divNode, 'at england');
-					var spanNodeDate = createNode('span', divNode, individualTeamData[i]['date']);
-
-					imageNodeFirst.setAttribute('src' , 'https://via.placeholder.com/115x115');
-					imageNodeTwo.setAttribute('src' , 'https://via.placeholder.com/115x115');
-					overlayDiv.setAttribute('class' , 'overlay');
-					spanNodeScore.setAttribute('class' , 'score');
-					divNode.setAttribute('class' , 'match-detail');
+				if (matchData['score1'] == null) {
+					var spanNodeScore = createNode('span', overlayDiv, 'V / S');
+				} else {
+					var spanNodeScore = createNode('span', overlayDiv, matchData['score1'] + ' - ' + matchData['score2']);
 				}
 
-				count += 6;
+				var divNode = createNode('div', overlayDiv, '');
+				var spanNodeVenue = createNode('span', divNode, 'at england');
+				var spanNodeDate = createNode('span', divNode, matchData['date']);
 
-				
+				imageNodeFirst.setAttribute('src', 'https://via.placeholder.com/115x115');
+				imageNodeTwo.setAttribute('src', 'https://via.placeholder.com/115x115');
+				overlayDiv.setAttribute('class', 'overlay');
+				spanNodeScore.setAttribute('class', 'score');
+				divNode.setAttribute('class', 'match-detail');
 			}
 
 
@@ -510,7 +413,6 @@ window.onload = function () {
 					document.querySelector(".container").innerHTML = "";
 					document.querySelector(".container").appendChild(ErrorNode);
 				}
-
 				xhr.send();
 			}
 
@@ -522,8 +424,138 @@ window.onload = function () {
 
 				return elementNode;
 			}
-		}
 
+
+			if (page_class.classList.contains("clubListPage")) {
+
+				// dom element manipulation
+				var counter = document.querySelector('.counters');
+				var counterAt = (counter.offsetTop + counter.offsetHeight * 0.75);
+				var awardsArray = this.Array.from(this.document.querySelectorAll('.award li'));
+				var searchClublist = this.document.querySelector('.search-clublist-form #clublist');
+				var searchButton = this.document.querySelector('.search-clublist-form button');
+				var resultSection = document.querySelector('.results ul');
+				var previousSearch = null;
+				var individualTeamData = [];
+				var count = null;
+				var onlyOnce = true;
+
+				// event for start the counter
+				window.addEventListener('scroll', function () {
+					var pageAt = (window.scrollY + window.innerHeight);
+
+					if (pageAt > counterAt) { runCounter(counter); }
+				});
+
+				// function for running the counter
+				function runCounter(div) {
+					var counters = div.querySelectorAll('.counter');
+
+					if (!div.classList.contains("started")) {
+						div.classList.add("started");
+						counters.forEach(function (counter) {
+
+							var updateCounter = function () {
+
+								var target = +counter.getAttribute('data-target');
+								var count = +counter.getAttribute('data-current');
+
+								var increment = target / 100;
+
+								if (count < target) {
+									var currentVal = count + increment;
+									counter.setAttribute("data-current", currentVal);
+									counter.innerText = Math.floor(currentVal);
+									setTimeout(updateCounter, 50);
+								} else {
+									counter.innerText = target;
+								}
+							};
+							updateCounter();
+						});
+					}
+				}
+
+
+				awardsArray.forEach(function (element) {
+					element.addEventListener('click', function () {
+						element.classList.toggle('active');
+					});
+				});
+
+				// function for get options
+				function getOptions() {
+					getData(base_url, callback);
+
+					function callback(data) {
+						data.clubs.forEach(function (element) {
+							createNode('option', searchClublist, element.key);
+						});
+					}
+				}
+
+				getOptions();
+
+				// event for initiating the getting data process
+				searchButton.addEventListener('click', function (e) {
+					e.preventDefault();
+					if (previousSearch !== searchClublist.value) {
+						previousSearch = searchClublist.value;
+						var keyName = searchClublist.value;
+						displayCard(keyName);
+					}
+				});
+
+				// function for getting indivual team data
+				function displayCard(keyName) {
+					getData(contractual_url, callback);
+
+					individualTeamData = [];
+					function callback(data) {
+						data.rounds.forEach(function (round) {
+							round.matches.forEach(function (match) {
+								if (match.team1.key == keyName || match.team2.key == keyName) {
+									individualTeamData.push(match);
+								}
+							});
+						});
+
+						console.log(individualTeamData);
+						count = 0;
+						resultSection.innerHTML = '';
+						displaySixCard();
+					}
+				}
+
+				// function for display six cards
+				function displaySixCard() {
+					var i = null;
+					for (i = count; i < count + 6 && i < individualTeamData.length; i++) {
+						createCard(individualTeamData[i], resultSection);
+					}
+
+					count += 6;
+
+					if (onlyOnce) {
+						onlyOnce = false;
+
+						var loadMore = createNode('a', resultSection.parentNode, 'load more');
+						loadMore.setAttribute('class', 'load-more');
+						loadMore.addEventListener('click', displaySixCard);
+
+						resultSection.classList.add('active');
+					}
+
+					if (i >= individualTeamData.length) {
+						document.querySelector('.load-more').classList.add('none');
+					} else {
+						document.querySelector('.load-more').classList.remove('none');
+					}
+				}
+			} else if( true ){
+
+			}
+		}
 	}
 }
 
