@@ -172,6 +172,7 @@ header {
   z-index: 2;
   top: 0;
   left: 0;
+  transition: 0.3s ease-in-out;
 }
 
 header.active { background-color: rgba(0,0,0,0.6); }
@@ -204,6 +205,7 @@ header h1 a {
 }
 
 .navbar a {
+  padding: 25px 10px;
   color: #FFF;
   font-size: 14px;
   text-transform: uppercase;
@@ -211,7 +213,6 @@ header h1 a {
 }
 
 .navbar li {
-  padding: 25px 10px;
   position: relative;
   cursor: pointer;
   -webkit-transition: 0.2s ease-in-out;
@@ -236,18 +237,25 @@ header h1 a {
 .navbar li:last-child::before { content: none; }
 
 .navbar li:last-child { 
-  padding: 5px 10px;
   border-top-right-radius: 7px;
   border-bottom-left-radius: 7px;
-  cursor: pointer;
   -webkit-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-.ellipsis {
-  text-indent: -9999px;
+.navbar li:last-child a { 
+  padding: 5px 10px;
+  cursor: pointer;
 }
+
+.navbar li.active {  background-color: rgba(0,0,0,0.5); }
+
+.navbar li.active::before { background-color: rgb(250, 204, 0); }
+
+.navbar li:last-child.active { background-color: rgba(0,0,0,0.5); }
+
+.ellipsis { text-indent: -9999px; }
 
 .ellipsis::before {
   content: "\f142";
@@ -270,7 +278,7 @@ header h1 a {
   border-radius: 50px;
   display: none;
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 3.5%;
   background-color: rgba(255,255,255,0.5);
 }
@@ -531,11 +539,12 @@ header h1 a {
 }
 
 .modal h3 {
+  padding-bottom: 3%;
   font-size: 25px;
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
-  padding-bottom: 3%;
+  font-family: 'Montserrat';
 }
 
 .sign-up-form > span,
@@ -646,7 +655,7 @@ form label {
 .error span { visibility: visible; }
 
 .sign-in,
-.sign-up{
+.sign-up {
   padding: 2% 5%;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -819,7 +828,7 @@ form label {
   position: fixed;
   z-index: 2;
   top: 20%;
-  left: -25%;
+  left: -100%;
   background-color: rgb(250, 204, 0);
   -webkit-animation: slideIn 4s ease-in-out;
   animation: slideIn 4s ease-in-out;
@@ -834,10 +843,11 @@ form label {
 .welcome .user {
   font-family: 'edosz';
   font-size: 20px;
+  letter-spacing: 1px;
 }
 
 @-webkit-keyframes slideIn {
-  0% { left: -25%; }
+  0% { left: -100%; }
 
   20% { left: 1.5%; }
 
@@ -845,11 +855,11 @@ form label {
 
   80% { left: 1%; }
 
-  100% { left: -25%; }
+  100% { left: -100%; }
 }
 
 @keyframes slideIn {
-  0% { left: -25%; }
+  0% { left: -100%; }
 
   20% { left: 1.5%; }
 
@@ -857,11 +867,12 @@ form label {
 
   80% { left: 1%; }
 
-  100% { left: -25%; }
+  100% { left: -100%; }
 }
 /* welcome section styling ends here */
 /* slider section styling start here */
 .slider .wrapper { max-width: 100%; }
+
 .slider figure img:first-child { display: block; }
 
 .slider figure img:last-child { display: none;}
@@ -989,12 +1000,12 @@ form label {
   font-size: 25px;
 }
 
-.slider-controls li{
+.slider-controls li {
   display: block;
   text-align: center;
 }
 
-.active-slide{
+.active-slide {
   -webkit-transition: none;
   -o-transition: none;
   transition: none;
@@ -1087,13 +1098,13 @@ h3 + p {
 }
 
 @-webkit-keyframes filter {
-  0% { width: 0; }
-  100% { width: 100%; }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes filter {
-  0% { width: 0; }
-  100% { width: 100%; }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .tab-content {
@@ -1260,7 +1271,10 @@ h3 + p {
   display: none;
 }
 
-.award li.active::before { color: rgb(252,66,66); }
+.award li.active::before { 
+  display: block;
+  color: rgb(252,66,66);
+}
 /* award section styling ends here */
 /* search clublist section styling start here */
 .search-matchday,
@@ -1320,6 +1334,9 @@ select {
   background-size: cover;
 }
 
+.matchday-results .wrapper,
+.results .wrapper {text-align: center;}
+
 .matchday-results ul,
 .results ul {
   display: -webkit-box;
@@ -1327,7 +1344,7 @@ select {
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: space-around;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -1349,11 +1366,36 @@ select {
   background-position: center center;
   -ms-flex-preferred-size: 32%;
   flex-basis: 32%;
-  opacity: 0;
   -webkit-transition: 0.6s ease-in-out;
   -o-transition: 0.6s ease-in-out;
   transition: 0.6s ease-in-out;
 }
+
+.load-more {
+  padding: 0.5% 1.5%;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin: 2% 0;
+  background-color: rgb(250, 204, 0);
+  color: #000;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+h5 {
+  padding: 1% 0;
+  display: block;
+  font-family: 'edosz';
+  font-size: 30px;
+  font-weight: 500;
+  color: #FFF;
+  text-align: center;
+}
+
+h5 span { color: rgb(250, 204, 0); }
 
 .matchday-results .active-scrore-card,
 .results .active-scrore-card { opacity: 1; }
@@ -1457,6 +1499,7 @@ h4 {
 h4 a { 
   color: #FFF;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .donate { padding: 4% 0; }
@@ -1488,7 +1531,7 @@ h4 a {
 =================================*/ 
 
 /* index page footer styling added */
-.loginPage footer{
+.loginPage footer {
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -1497,7 +1540,7 @@ h4 a {
   background: transparent;
 }
 
-.loginPage footer .wrapper { padding: 0;}
+.loginPage footer .wrapper { padding: 0; }
 
 .loginPage footer ul:first-of-type { 
   padding: 1.5% 0;
@@ -1555,7 +1598,7 @@ footer {
   background-size: cover;
 }
 
-footer .wrapper { padding: 5% 0 1%;}
+footer .wrapper { padding: 5% 0 1%; }
 
 h6 a { 
   color: #FFF;
@@ -1564,7 +1607,7 @@ h6 a {
   text-transform: uppercase;
 }
 
-footer ul:first-of-type { padding: 3% 0;}
+footer ul:first-of-type { padding: 3% 0; }
 
 footer ul li { display: block; }
 
@@ -1581,7 +1624,7 @@ footer ul li a {
   display: inline-block;
 }
 
-.social-icon { text-align: center;}
+.social-icon { text-align: center; }
 
 .copyrights { 
   padding: 0.5% 0;
@@ -1682,6 +1725,11 @@ footer ul li { text-align: center; }
   .search-clublist-form button:hover { 
     -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
     box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+  }
+
+  .load-more:hover {
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.4); 
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   }
 
   .matchDetailPage h4 a:hover { color: rgb(250, 204, 0); }
@@ -2037,6 +2085,8 @@ footer ul li { text-align: center; }
     padding: 2% 0;
     font-weight: 800;
   }
+
+  .load-more { padding: 2% 5%; }
 
   .matchday-results li,
   .results li { -ms-flex-preferred-size: 100%; flex-basis: 100%; }
