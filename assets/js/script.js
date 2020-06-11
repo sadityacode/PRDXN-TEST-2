@@ -4,8 +4,13 @@ window.onload = function () {
 
 	var page_class = this.document.querySelector(".container");
 
+	// function for preventing the back button
+	function preventBack() { window.history.forward(); }
+
 	if (page_class.classList.contains("loginPage")) {
 		console.log("hii");
+
+		preventBack();
 
 		var signUpButton = this.document.querySelector(".sign-up-modal");
 		var signInButton = this.document.querySelector(".sign-in-modal");
@@ -43,6 +48,8 @@ window.onload = function () {
 			if (element.classList.contains('sign-in-modal')) {
 				formDivision.classList.add('active');
 			}
+
+			document.querySelector('html').classList.add('no-scroll');
 		}
 
 		closeModalButton.addEventListener('click', closeModal);
@@ -50,6 +57,7 @@ window.onload = function () {
 		function closeModal() {
 			modal.classList.remove('block');
 			formDivision.classList.remove('block', 'active');
+			document.querySelector('html').classList.remove('no-scroll');
 		}
 
 		switchFormArray.forEach(function (element) {
@@ -196,12 +204,17 @@ window.onload = function () {
 		}
 	} else {
 
+
 		var header = this.document.querySelector('header');
 		var ellipsis = this.document.querySelector('.ellipsis');
 		var hamburger = this.document.querySelector('.hamburger');
+		var signOut = this.document.querySelector('.sign-out');
 		var currentUrl = new URL(window.location.href);
 		var loggedInUser = currentUrl.searchParams.get("userid");
+		var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
 
+		// prevention for direct redirection on page
+		if( loggedInUser == null){ window.location.assign('index.html')	}
 
 		// function for passing values through url
 		function passValues(classes, page) {
@@ -214,6 +227,7 @@ window.onload = function () {
 		passValues('.home-page', 'home.html');
 		passValues('.clublist-page', 'clublist.html');
 		passValues('.matchdetail-page', 'matchdetail.html');
+		passValues('.logo','home.html');
 
 		// function for header activation 
 		window.addEventListener('scroll', function () {
@@ -241,11 +255,20 @@ window.onload = function () {
 			socialLinks.classList.toggle('block');
 		});
 
+		// function for sign out
+		signOut.addEventListener('click', function () {
+			userData.welcomeUser = true;
+			userData.userLogin = false;
+			window.localStorage.setItem(userData.uniqueId, JSON.stringify(userData));
+
+			window.location.assign('index.html');
+		});
+
 		if (page_class.classList.contains("homePage")) {
-			console.log('hi');
+
+			preventBack();
 
 			var welcomeDivision = document.querySelector('.welcome');
-			var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
 
 			// condition for welcome division
 			if (userData.welcomeUser == true) {
@@ -367,11 +390,9 @@ window.onload = function () {
 				var teamOneDiv = createNode('div', overlayDiv, '');
 				var figureNode = createNode('figure', teamOneDiv, '');
 				var imageNodeFirst = createNode('img', figureNode, '');
-				var headingNoode = createNode('h4', teamOneDiv, matchData['team1']['name'].split(' ')[0]);
 				var teamTwoDiv = createNode('div', overlayDiv, '');
 				var figureNode = createNode('figure', teamTwoDiv, '');
 				var imageNodeTwo = createNode('img', figureNode, '');
-				var headingNoode = createNode('h4', teamTwoDiv, matchData['team2']['name'].split(' ')[0]);
 
 				if (matchData['score1'] == null) {
 					var spanNodeScore = createNode('span', overlayDiv, 'V / S');
@@ -383,11 +404,44 @@ window.onload = function () {
 				var spanNodeVenue = createNode('span', divNode, 'at england');
 				var spanNodeDate = createNode('span', divNode, matchData['date']);
 
+				teamOneDiv.setAttribute('class', 'team-one');
+				teamTwoDiv.setAttribute('class', 'team-two');
 				imageNodeFirst.setAttribute('src', 'https://via.placeholder.com/115x115');
 				imageNodeTwo.setAttribute('src', 'https://via.placeholder.com/115x115');
 				overlayDiv.setAttribute('class', 'overlay');
 				spanNodeScore.setAttribute('class', 'score');
 				divNode.setAttribute('class', 'match-detail');
+
+				if (resultSection.parentElement.parentElement.classList.contains('matchday-results')) {
+
+					var headingNodeFirst = createNode('h4', teamOneDiv, '');
+					var anchorNodeFirst = createNode('a', headingNodeFirst, matchData['team1']['name'].split(' ')[0]);
+					var headingNodeTwo = createNode('h4', teamTwoDiv, '');
+					var anchorNodeTwo = createNode('a', headingNodeTwo, matchData['team2']['name'].split(' ')[0]);
+
+					anchorNodeFirst.setAttribute('data-key', matchData['team1']['key']);
+					anchorNodeFirst.setAttribute('title', matchData['team1']['name'].split(' ')[0]);
+					anchorNodeTwo.setAttribute('data-key', matchData['team2']['key']);
+					anchorNodeTwo.setAttribute('title', matchData['team2']['name'].split(' ')[0]);
+
+					anchorNodeFirst.addEventListener('click', function () { redirectToClubPage(anchorNodeFirst); });
+					anchorNodeTwo.addEventListener('click', function () { redirectToClubPage(anchorNodeTwo); });
+
+				} else {
+
+					var headingNodeFirst = createNode('h4', teamOneDiv, matchData['team1']['name'].split(' ')[0]);
+					var headingNodeTwo = createNode('h4', teamTwoDiv, matchData['team2']['name'].split(' ')[0]);
+
+				}
+
+				return liNode;
+			}
+
+			//function for redirection to club page
+			function redirectToClubPage(element) {
+				var key = element.getAttribute('data-key');
+
+				window.location.assign("clublist.html?userid=" + loggedInUser + "&keyName=" + key);
 			}
 
 
@@ -439,6 +493,7 @@ window.onload = function () {
 				var individualTeamData = [];
 				var count = null;
 				var onlyOnce = true;
+				var passedKeyName = currentUrl.searchParams.get("keyName");
 
 				// event for start the counter
 				window.addEventListener('scroll', function () {
@@ -488,13 +543,32 @@ window.onload = function () {
 					getData(base_url, callback);
 
 					function callback(data) {
+
+						var keyValidation = false;
+
 						data.clubs.forEach(function (element) {
 							createNode('option', searchClublist, element.key);
+							if (element.key == passedKeyName) {
+								searchClublist.selectedIndex = parseInt(data.clubs.indexOf(element)) + 1;
+								keyValidation = true;
+							}
 						});
+
+						if (passedKeyName !== null && keyValidation == false) {
+							createNode('option', searchClublist, passedKeyName);
+							searchClublist.selectedIndex = parseInt(data.clubs.length) + 1;
+						}
 					}
 				}
 
 				getOptions();
+
+
+				// function for displaying data if we redirctly come on this page
+				if (passedKeyName) {
+					previousSearch = passedKeyName;
+					displayCard(passedKeyName);
+				}
 
 				// event for initiating the getting data process
 				searchButton.addEventListener('click', function (e) {
@@ -527,11 +601,20 @@ window.onload = function () {
 					}
 				}
 
+				function displayError() {
+					var warningNode = createNode('h5', resultSection, '');
+					createNode('span', warningNode, 'sorry !');
+					warningNode.innerHTML += ' no data found';
+				}
+
 				// function for display six cards
 				function displaySixCard() {
 					var i = null;
+
+					if (individualTeamData.length === 0) { displayError(); }
+
 					for (i = count; i < count + 6 && i < individualTeamData.length; i++) {
-						createCard(individualTeamData[i], resultSection);
+						var card = createCard(individualTeamData[i], resultSection);
 					}
 
 					count += 6;
@@ -552,7 +635,54 @@ window.onload = function () {
 						document.querySelector('.load-more').classList.remove('none');
 					}
 				}
-			} else if( true ){
+			} else if (page_class.classList.contains("matchDetailPage")) {
+
+				var searchMatchDay = this.document.querySelector('.search-matchday-form #matchday');
+				var searchButton = this.document.querySelector('.search-matchday-form button');
+				var resultSection = this.document.querySelector('.matchday-results ul');
+				var previousSearch = null;
+
+				// function for get options
+				function getOptions() {
+					getData(contractual_url, callback);
+
+					function callback(data) {
+						data.rounds.forEach(function (element) {
+							createNode('option', searchMatchDay, element.name);
+						});
+					}
+				}
+
+				getOptions();
+
+				// event for initiating the getting data process
+				searchButton.addEventListener('click', function (e) {
+					e.preventDefault();
+					if (previousSearch !== searchMatchDay.value) {
+						previousSearch = searchMatchDay.value;
+						var keyDay = searchMatchDay.value;
+						resultSection.innerHTML = "";
+						displayCard(keyDay);
+					}
+				});
+
+				// function for getting indivual team data
+				function displayCard(keyDay) {
+					getData(contractual_url, callback);
+
+					function callback(data) {
+						data.rounds.forEach(function (round) {
+							if (round.name == keyDay) {
+								console.log(round);
+								round.matches.forEach(function (element) {
+									createCard(element, resultSection);
+								});
+							}
+						});
+					}
+
+					resultSection.classList.add('active');
+				}
 
 			}
 		}
