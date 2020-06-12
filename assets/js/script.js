@@ -232,9 +232,10 @@ window.onload = function () {
 		var currentUrl = new URL(window.location.href);
 		var loggedInUser = currentUrl.searchParams.get("userid");
 		var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
+		var isUserLogin = userData.userLogin;
 
 		// prevention for direct redirection on any page
-		if( loggedInUser == null){ window.location.assign('index.html')	}
+		if( loggedInUser == null || isUserLogin == false){ window.location.assign('index.html')	}
 
 		// function for passing values through url
 		function passValues(classes, page) {
@@ -290,8 +291,6 @@ window.onload = function () {
 		});
 
 		if (page_class.classList.contains("homePage")) {
-
-			preventBack();
 
 			// for dom manipulation of the page
 			var welcomeDivision = document.querySelector('.welcome');
