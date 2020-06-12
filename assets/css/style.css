@@ -386,8 +386,8 @@ header h1 { flex-basis: 7%; }
   opacity: 0;
   text-align: center;
   text-shadow: 5px 10px 5px rgba(0,0,0,0.9);
-  -webkit-animation: slideDown 0.8s ease-in-out 2s forwards;
-  animation: slideDown 0.8s ease-in-out 2s forwards;
+  -webkit-animation: slideDown 0.8s ease-in-out 1.5s forwards;
+  animation: slideDown 0.8s ease-in-out 1.5s forwards;
 }
 
 @-webkit-keyframes slideDown {
@@ -423,8 +423,8 @@ header h1 { flex-basis: 7%; }
 .loginPage .banner-content ul {
   opacity: 0;
   text-align: center;
-  -webkit-animation: slideDown 0.8s ease-in-out 2.5s forwards;
-  animation: slideDown 0.8s ease-in-out 2.5s forwards;
+  -webkit-animation: slideDown 0.8s ease-in-out 2s forwards;
+  animation: slideDown 0.8s ease-in-out 2s forwards;
 }
 
 .loginPage .banner-content a {
