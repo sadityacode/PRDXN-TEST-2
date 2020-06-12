@@ -1,4 +1,7 @@
-prdxn-dev-framework
-===================
 
-PRDXN's "starting package" used for development.
+<!-- STATIC CREDENTIALS FOR LOGIN PURPOSE -->
+staticData = {
+	username: 'addi',
+	email: 'testresult@prdxn.com',
+	password: 'success123@prdxn'
+}

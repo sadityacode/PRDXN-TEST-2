@@ -8,7 +8,6 @@ window.onload = function () {
 	function preventBack() { window.history.forward(); }
 
 	if (page_class.classList.contains("loginPage")) {
-		console.log("hii");
 
 		preventBack();
 
@@ -621,7 +620,6 @@ window.onload = function () {
 							});
 						});
 
-						console.log(individualTeamData);
 						count = 0;
 						resultSection.innerHTML = '';
 						displaySixCard();
@@ -702,7 +700,6 @@ window.onload = function () {
 					function callback(data) {
 						data.rounds.forEach(function (round) {
 							if (round.name == keyDay) {
-								console.log(round);
 								round.matches.forEach(function (element) {
 									createCard(element, resultSection);
 								});
