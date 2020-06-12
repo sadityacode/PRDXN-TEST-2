@@ -177,9 +177,9 @@ window.onload = function () {
 			var UserAlreadyExist = checkUser(Email);
 
 			if (UserAlreadyExist) {
-				var password = document.querySelector('.sign-in-password').value;
+				var password = document.querySelector('.sign-in-password');
 
-				if (UserAlreadyExist['password'] === password) {
+				if (UserAlreadyExist['password'] === password.value) {
 					formReset();
 
 					UserAlreadyExist['userLogin'] = true;
