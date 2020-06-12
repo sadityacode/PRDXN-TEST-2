@@ -1595,7 +1595,10 @@ footer {
 
 footer .wrapper { padding: 5% 0 1%; }
 
-h6 { width: 7%; }
+h6 { 
+  width: 7%;
+  margin: 0 auto;
+}
 
 footer ul:first-of-type { padding: 3% 0; }
 
