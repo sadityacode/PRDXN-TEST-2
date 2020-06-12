@@ -232,6 +232,9 @@ window.onload = function () {
 		var currentUrl = new URL(window.location.href);
 		var loggedInUser = currentUrl.searchParams.get("userid");
 		var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
+
+		if( !userData ){ window.location.assign('index.html')}
+		
 		var isUserLogin = userData.userLogin;
 
 		// prevention for direct redirection on any page
