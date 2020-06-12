@@ -131,13 +131,13 @@ li {
   left: 0;
 }
 
+.loginPage .wrapper { width: 100%; }
+
 .loginPage header .wrapper { display: block;}
 
-.loginPage header a { 
-  color: #FFF;
-  font-family: 'edosz';
-  font-size: 50px;
-  text-transform: uppercase;
+.loginPage header ul li:nth-child(2) { 
+  flex-basis: 7%;
+  padding: 0 1.5%;
 }
 
 .loginPage header ul {
@@ -152,14 +152,14 @@ li {
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
 .horizontal-line {
-  width: 45%;
+  width: 40%;
   height: 0;
   text-indent: -9999px;
   border-bottom: 1px solid #FFF;
@@ -197,12 +197,7 @@ header > div {
   align-items: center;
 }
 
-header h1 a { 
-  color: #FFF;
-  font-family: 'edosz';
-  font-size: 45px;
-  text-transform: uppercase;
-}
+header h1 { flex-basis: 7%; }
 
 .navbar a {
   padding: 25px 10px;
@@ -1600,12 +1595,7 @@ footer {
 
 footer .wrapper { padding: 5% 0 1%; }
 
-h6 a { 
-  color: #FFF;
-  font-family: 'edosz';
-  font-size: 45px;
-  text-transform: uppercase;
-}
+h6 { width: 7%; }
 
 footer ul:first-of-type { padding: 3% 0; }
 
@@ -1742,6 +1732,8 @@ footer ul li { text-align: center; }
 =================================*/ 
 @media only screen and (max-width: 995px) {
   /* INDEX PAGE RESPONSIVE START HERE */
+  .loginPage header ul li:nth-child(2) { flex-basis: 8.5%; }
+
   .horizontal-line { width: 40%; }
 
   .loginPage .banner h2 {
@@ -1752,6 +1744,9 @@ footer ul li { text-align: center; }
   .form-modal { width: 90%; }
   /* INDEX PAGE RESPONSIVE ENDS HERE */
   /* HOME PAGE RESPONSIVE START HERE */
+  
+  header h1 { flex-basis: 8.5%; }
+
   .slider h2 { font-size: 30px; }
 
   .merchandise h3 ,
@@ -1783,6 +1778,8 @@ footer ul li { text-align: center; }
     -ms-flex-preferred-size: 48%; 
     flex-basis: 48%; 
   }
+  
+  h6 { width: 8.5%; }
   /* CLUBLIST PAGE RESPONSIVE ENDS HERE */
 } 
 
@@ -1791,7 +1788,12 @@ footer ul li { text-align: center; }
 =================================*/ 
 @media only screen and (max-width: 767px) {
   /* INDEX PAGE RESPONSIVE START HERE */
-  .loginPage header a { font-size: 35px; }
+  .loginPage header ul li:nth-child(2) { 
+    flex-basis: 10%;
+    padding: 0 2%;
+  }
+
+  .horizontal-line { width: 35%; }
 
   .loginPage .banner h2 { font-size: 15px; }
 
@@ -1799,6 +1801,9 @@ footer ul li { text-align: center; }
     padding: 4px 50px;
     font-size: 9px;
   }
+
+  
+  .welcome { padding: 4% 4%; }
 
   .banner-content ul li:first-child a {
     border-top-right-radius: 8px;
@@ -1824,9 +1829,12 @@ footer ul li { text-align: center; }
   .youtube::before { font-size: 12px; }
   /* INDEX PAGE RESPONSIVE ENDS HERE */
   /* HOME PAGE RESPONSIVE START HERE */
-  header h1 a { font-size: 40px; }
+  header h1 { flex-basis: 10%; }
+
   .navbar a { font-size: 12px; }
+
   .ellipsis::before { font-size: 13px; }
+
   .slider h2 { font-size: 20px;}
   
   .merchandise h3 ,
@@ -1881,6 +1889,8 @@ footer ul li { text-align: center; }
     font-size: 25px;
     padding: 0 1%;
   }
+
+  h6 { width: 10%; }
   /* MATCH DETAIL PAGE RESPONSIVE STYLING ENDS HERE */
 }
 
@@ -1889,6 +1899,10 @@ footer ul li { text-align: center; }
 =================================*/ 
 @media only screen and (max-width: 540px) {
   /* INDEX PAGE RESPONSIVE START HERE */
+  .loginPage header ul li:nth-child(2) { 
+    flex-basis: 15%;
+  }
+
   .loginPage header { padding: 2% 0; }
 
   .loginPage header ul { 
@@ -1923,7 +1937,7 @@ footer ul li { text-align: center; }
     border-bottom-right-radius: 0;
   }
 
-  .form-modal { width: 98%; }
+  .form-modal { width: 90%; }
 
   .loginPage footer { padding: 3% 0; }
 
@@ -1933,6 +1947,8 @@ footer ul li { text-align: center; }
   .youtube::before { font-size: 18px; }
   /* INDEX PAGE RESPONSIVE ENDS HERE */
   /* HOME PAGE RESPONSIVE START HERE */
+  header h1 { flex-basis: 15%; }
+
   header { background-color: transparent; }
 
   .navbar {
@@ -1943,7 +1959,7 @@ footer ul li { text-align: center; }
     z-index: 2;
     top: 0;
     left: 0;
-    padding: 10% 0;
+    padding: 20% 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: rgb(250, 204, 0);
@@ -2019,12 +2035,15 @@ footer ul li { text-align: center; }
     background-color: #000;
   }
 
+  
+  .welcome { padding: 8% 4%; }
+
   .slider figure img:last-child { display: block; }
   .slider figure img:first-child { display: none; }
 
   .slider h2 { width: 50%; }
 
-  .read-more { padding: 1% 8%; }
+  .read-more { padding: 2.5% 8%; }
 
   .merchandise,
   .about-us,
@@ -2074,8 +2093,9 @@ footer ul li { text-align: center; }
   .search-matchday-form select,
   .search-clublist-form select { 
     width: 100%;
-    padding: 3% 4%;
+    padding: 4%;
     margin: 5% 0;
+    font-size: 11.5px;
   }
 
   .search-matchday-form button,
@@ -2093,5 +2113,7 @@ footer ul li { text-align: center; }
   /* CLUB LIST PAGE RESPONSIVE ENDS HERE */
   /* MATCH DETAIL PAGE RESPONSIVE STYLING START HERE */
   .donate { padding: 10% 0; }
+
+  h6 { width: 15%; }
   /* MATCH DETAIL PAGE RESPONSIVE STYLING ENDS HERE */
 }
