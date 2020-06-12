@@ -12,6 +12,7 @@ window.onload = function () {
 
 		preventBack();
 
+		// for dom manipulation of the page
 		var signUpButton = this.document.querySelector(".sign-up-modal");
 		var signInButton = this.document.querySelector(".sign-in-modal");
 		var modal = document.querySelector(".modal");
@@ -31,8 +32,18 @@ window.onload = function () {
 			uniqueId: 'eplUser1000'
 		}
 
+		function Subscriber( name, email , password , uniqueid) {
+			this.username = name;
+			this.email = email;
+			this.password = password;
+			this.userLogin = true;
+			this.welcomeUser = true;
+			this.uniqueId = uniqueid;
+		}
+
 		window.localStorage.setItem(staticData['uniqueId'], JSON.stringify(staticData));
 
+		// regex object for verifying the inputs
 		var RegexExpression = {
 			username_regex: /^([a-zA-Z]){2,10}$/,
 			email_regex: /^([0-9a-zA-Z\_\.\-]+)@([0-9a-zA-Z\_\.\-]+)\.([a-zA-Z]+)$/,
@@ -42,6 +53,7 @@ window.onload = function () {
 		signUpButton.addEventListener("click", function () { displayModal(this); });
 		signInButton.addEventListener("click", function () { displayModal(this); });
 
+		// function for displaying the modal
 		function displayModal(element) {
 			modal.classList.add('block');
 			formDivision.classList.add('block');
@@ -54,12 +66,15 @@ window.onload = function () {
 
 		closeModalButton.addEventListener('click', closeModal);
 
+		// function for closing the modal
 		function closeModal() {
+			formReset();
 			modal.classList.remove('block');
 			formDivision.classList.remove('block', 'active');
 			document.querySelector('html').classList.remove('no-scroll');
 		}
 
+		// function for switch the forms
 		switchFormArray.forEach(function (element) {
 			element.addEventListener('click', function () {
 				if (this.id === "sign-in-form") {
@@ -69,6 +84,12 @@ window.onload = function () {
 				}
 			})
 		});
+
+		window.addEventListener('click' , function (e){
+			if( e.target == modal.querySelector('.wrapper') && e.target !== closeModalButton && e.target !== signUpButton && e.target !== signInButton){
+				closeModal();
+			}
+		}); 
 
 		// function form validate sign up input fields
 		signUpFieldsArray.forEach(function (element) {
@@ -98,12 +119,13 @@ window.onload = function () {
 			}
 		}
 
+		// function for submiting the form
 		submitForm.forEach(function (element) {
 			element.addEventListener('click', function () {
 				if (element.classList.contains('sign-up')) {
 					storeData();
 				} else if (element.classList.contains('sign-in')) {
-					varifyData();
+					verifyData();
 				}
 			})
 		});
@@ -132,15 +154,13 @@ window.onload = function () {
 			var UserAlreadyExist = checkUser(newEmail);
 
 			if (allFieldsCorrect && !UserAlreadyExist) {
-				var Data = {};
-				signUpFieldsArray.forEach(function (element) {
-					Data[element.getAttribute('data-regex').split('_')[0]] = element.value;
-				});
 
 				var uniqueId = "eplUser" + window.localStorage.length;
-				Data['uniqueId'] = uniqueId;
-				Data['userLogin'] = true;
-				Data['welcomeUser'] = true;
+				var name = document.querySelector('.sign-up-name').value;
+				var email = document.querySelector('.sign-up-email').value;
+				var password = document.querySelector('.sign-up-password').value;
+
+				var Data = new Subscriber(name , email , password , uniqueId);
 
 				var data_serialized = JSON.stringify(Data);
 
@@ -152,7 +172,7 @@ window.onload = function () {
 		}
 
 		// function for verify Data
-		function varifyData() {
+		function verifyData() {
 			var Email = document.querySelector('.sign-in-email');
 
 			var UserAlreadyExist = checkUser(Email);
@@ -204,16 +224,17 @@ window.onload = function () {
 		}
 	} else {
 
-
+		// for dom manipulation of the page
 		var header = this.document.querySelector('header');
 		var ellipsis = this.document.querySelector('.ellipsis');
 		var hamburger = this.document.querySelector('.hamburger');
 		var signOut = this.document.querySelector('.sign-out');
+		var socialLinks = document.querySelector('.social-links');
 		var currentUrl = new URL(window.location.href);
 		var loggedInUser = currentUrl.searchParams.get("userid");
 		var userData = this.JSON.parse(window.localStorage.getItem(loggedInUser));
 
-		// prevention for direct redirection on page
+		// prevention for direct redirection on any page
 		if( loggedInUser == null){ window.location.assign('index.html')	}
 
 		// function for passing values through url
@@ -248,11 +269,16 @@ window.onload = function () {
 		});
 
 		// function for social links display
-		ellipsis.parentNode.addEventListener('click', function () {
-
-			this.classList.toggle('active');
-			var socialLinks = document.querySelector('.social-links');
+		ellipsis.addEventListener('click', function () {
+			ellipsis.parentNode.classList.toggle('active');
 			socialLinks.classList.toggle('block');
+		});
+
+		window.addEventListener('click' , function (e){
+			if(e.target !== ellipsis && e.target !== socialLinks){
+				ellipsis.parentNode.classList.remove('active');
+				socialLinks.classList.remove('block');
+			}
 		});
 
 		// function for sign out
@@ -268,6 +294,7 @@ window.onload = function () {
 
 			preventBack();
 
+			// for dom manipulation of the page
 			var welcomeDivision = document.querySelector('.welcome');
 
 			// condition for welcome division
@@ -601,6 +628,7 @@ window.onload = function () {
 					}
 				}
 
+				// function for displaying the error
 				function displayError() {
 					var warningNode = createNode('h5', resultSection, '');
 					createNode('span', warningNode, 'sorry !');
@@ -637,6 +665,7 @@ window.onload = function () {
 				}
 			} else if (page_class.classList.contains("matchDetailPage")) {
 
+				// function for dom manipulation of the page
 				var searchMatchDay = this.document.querySelector('.search-matchday-form #matchday');
 				var searchButton = this.document.querySelector('.search-matchday-form button');
 				var resultSection = this.document.querySelector('.matchday-results ul');
@@ -688,26 +717,3 @@ window.onload = function () {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
